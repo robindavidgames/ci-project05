@@ -8,6 +8,12 @@ Run server to make sure everything is going OK
 Run migrations: "python3 manage.py migrate"
 Create superuser: "python3 manage.py createsuperuser"
 
+AllAuth:
+install with: "pip3 install django-allauth==0.41.0"
+Add authentication backends and installed apps details, from AllAuth documentation (https://django-allauth.readthedocs.io/en/latest/installation.html)
+Create URLs in urls.py: path('accounts', include('allauth.urls')),
+Run migrations
+
 
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
