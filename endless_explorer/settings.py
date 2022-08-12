@@ -82,6 +82,20 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
+# To log emails to the console.
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# From Boutique Ado sample project
+# Authenticate with username or email
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_URL = '/accounts/login/'
+# Turn this into the URL to visit after logging in
+LOGIN_REDIRECT_URL = '/'
+
 WSGI_APPLICATION = 'endless_explorer.wsgi.application'
 
 

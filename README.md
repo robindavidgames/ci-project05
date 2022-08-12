@@ -13,6 +13,7 @@ install with: "pip3 install django-allauth==0.41.0"
 Add authentication backends and installed apps details, from AllAuth documentation (https://django-allauth.readthedocs.io/en/latest/installation.html)
 Create URLs in urls.py: path('accounts', include('allauth.urls')),
 Run migrations
+Once done with settings, etc, "pip3 freeze > requirements.txt"
 
 
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
