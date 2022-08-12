@@ -1,6 +1,17 @@
+SETUP:
+Use CI Template
+Open copy of template in gitpod
+Install Django: "pip3 install Django==3.2"
+Create projecT: "django-admin startproject endless_explorer ." (the . creates in current directory)
+Create gitignore file: "touch .gitignore" (and add *.sqlite3 to this file)
+Run server to make sure everything is going OK
+Run migrations: "python3 manage.py migrate"
+Create superuser: "python3 manage.py createsuperuser"
+
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome USER_NAME,
+Welcome robindavidgames,
 
 This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
