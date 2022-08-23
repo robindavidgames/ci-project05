@@ -19,6 +19,17 @@ Copy AllAuth Templates
 This is so that we can modify templates with versions that take precidence. Any of these that you delete will revert those requests to default.
 cp -r ../.pip-modules/lib/python3.8/site-packages/allauth/templates/* ./templates/allauth/
 
+Create a home app
+python3 manage.py startapp home
+create templates directory: mkdir -p home/templates/home
+in this, create index.html and make it extend base and load static:
+    {% extends "base.html" %}
+    {% load static %}
+create a view to render the template. Go to views.py
+create a urls.py file in home app (using the file from the project directory as a template)
+create a blank view: path('', views.index, name="home")
+and import views from the current directory: from . import views
+add the URLs to the project urls.py: path('', include('home.urls')),
 
 Credits:
 Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
