@@ -20,6 +20,9 @@ This is so that we can modify templates with versions that take precidence. Any 
 cp -r ../.pip-modules/lib/python3.8/site-packages/allauth/templates/* ./templates/allauth/
 
 
+Credits:
+Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome robindavidgames,
