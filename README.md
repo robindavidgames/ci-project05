@@ -15,6 +15,10 @@ Create URLs in urls.py: path('accounts', include('allauth.urls')),
 Run migrations
 Once done with settings, etc, "pip3 freeze > requirements.txt"
 
+Copy AllAuth Templates
+This is so that we can modify templates with versions that take precidence. Any of these that you delete will revert those requests to default.
+cp -r ../.pip-modules/lib/python3.8/site-packages/allauth/templates/* ./templates/allauth/
+
 
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
