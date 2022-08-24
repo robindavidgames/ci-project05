@@ -39,6 +39,16 @@ Endless Explorer is an ecommerce website selling camping gear. Users can browse 
 - add the URLs to the project urls.py: path('', include('home.urls')),
 - In settings.py, add "home" to installed apps.
 
+## Bugs
+### Views Error
+In my index view, I had made the error where I was rendering a tuple rather than calling a function:
+
+    return(render, 'home/index.html')
+
+Luckily, this error was caught very early in the project. Changing the line to call the render function solved the error.
+
+    return render(request, 'home/index.html')
+
 ## Credits:
 - Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
 
