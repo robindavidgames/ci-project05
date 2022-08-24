@@ -39,6 +39,10 @@ Endless Explorer is an ecommerce website selling camping gear. Users can browse 
 - add the URLs to the project urls.py: path('', include('home.urls')),
 - In settings.py, add "home" to installed apps.
 
+### Install Bootsrap
+- Bootstrap is installed when using the Bootstrap Starter in the base.html file.
+- Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
+
 ## Bugs
 ### Views Error
 In my index view, I had made the error where I was rendering a tuple rather than calling a function:
