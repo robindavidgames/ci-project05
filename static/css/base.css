@@ -3,6 +3,10 @@ body {
   padding-top: 4.5rem;
 }
 
-.clear {
+/* .clear {
   clear: both;
+} */
+
+.large-text {
+  font-size: large;
 }
