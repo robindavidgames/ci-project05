@@ -1,0 +1,77 @@
+<!-- Navbar template from https://getbootstrap.com/docs/4.6/examples/navbar-fixed/ -->
+<!-- Documentation here https://getbootstrap.com/docs/4.6/components/navbar/ -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    
+    <!-- Title -->
+    <a class="navbar-brand" href="{% url 'home' %}">Endless Explorer</a>
+
+    <!-- Navbar button on smaller screens -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu items -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+
+            <!-- Product Browse dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                    Browse Products
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Category 1</a>
+                    <a class="dropdown-item" href="#">Category 2</a>
+                    <a class="dropdown-item" href="#">Category 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Category 4</a>
+                </div>
+            </li>
+
+            <!-- Search Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                    Search
+                </a>
+                <div class="dropdown-menu">
+                    <form class="dropdown-item form-inline mt-2 mt-md-0" method="GET" action="">
+                        <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </li>
+
+            <!-- Account dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                    Account
+                </a>
+                <div class="dropdown-menu">
+                    {% if request.user.is_authenticated %}
+                        <a class="dropdown-item" href="#">My Profile</a>
+                        <!-- This link is taken from AllAuth -->
+                        <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
+                        {% if request.user.is_superuser %}
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Product Management</a>
+                        {% endif %}
+                    {% else %}
+                        <a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
+                        <a class="dropdown-item" href="{% url 'account_login' %}">Log In</a>
+                    {% endif %}
+                </div>
+            </li>
+
+        </ul>
+
+        <!-- Shopping bag -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
