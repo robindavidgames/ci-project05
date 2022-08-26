@@ -42,33 +42,6 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mr-auto">
 
-                    <!-- Home -->
-                    <!-- Possibly remove this active class -->
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-                    </li>
-
-                    <!-- Account dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                            Account
-                        </a>
-                        <div class="dropdown-menu">
-                            {% if request.user.is_authenticated %}
-                                <a class="dropdown-item" href="#">My Profile</a>
-                                <!-- This link is taken from AllAuth -->
-                                <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
-                                {% if request.user.is_superuser %}
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Product Management</a>
-                                {% endif %}
-                            {% else %}
-                                <a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
-                                <a class="dropdown-item" href="{% url 'account_login' %}">Log In</a>
-                            {% endif %}
-                        </div>
-                    </li>
-
                     <!-- Product Browse dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -96,13 +69,28 @@
                         </div>
                     </li>
 
-                </ul>
+                    <!-- Account dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                            Account
+                        </a>
+                        <div class="dropdown-menu">
+                            {% if request.user.is_authenticated %}
+                                <a class="dropdown-item" href="#">My Profile</a>
+                                <!-- This link is taken from AllAuth -->
+                                <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
+                                {% if request.user.is_superuser %}
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Product Management</a>
+                                {% endif %}
+                            {% else %}
+                                <a class="dropdown-item" href="{% url 'account_signup' %}">Register</a>
+                                <a class="dropdown-item" href="{% url 'account_login' %}">Log In</a>
+                            {% endif %}
+                        </div>
+                    </li>
 
-                <!-- Search bar -->
-                <!-- <form class="form-inline mt-2 mt-md-0" method="GET" action="">
-                    <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form> -->
+                </ul>
 
                 <!-- Shopping bag -->
                 <ul class="navbar-nav">
@@ -112,6 +100,7 @@
                         </a>
                     </li>
                 </ul>
+
             </div>
         </nav>
 
