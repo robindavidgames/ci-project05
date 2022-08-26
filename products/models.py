@@ -2,6 +2,11 @@ from django.db import models
 
 # From Boutique Ado sample project.
 class Category(models.Model):
+
+    # To make sure Django admin panel provides the correct name.
+    class Meta:
+        verbose_name_plural = 'Categories'
+
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
@@ -10,6 +15,7 @@ class Category(models.Model):
 
     def get_friendly_name(self):
         return self.friendly_name
+
 
 # Adapted from Boutique Ado sample project.
 class Product(models.Model):
