@@ -43,6 +43,17 @@ Endless Explorer is an ecommerce website selling camping gear. Users can browse 
 - Bootstrap is installed when using the Bootstrap Starter in the base.html file.
 - Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
 
+### Create products app
+- python3 manage.py startapp products
+- add to installed apps in settings.py
+- create model for the products in products/models.py
+- do a migrations dry run to identify potential issues.
+- python3 manage.py makemigrations --dry-run
+- make migrations then migrate with plan flag to make sure there are no issues with models
+- python3 manage.py migrate --plan
+- migrate.
+- register product model in products/admin.py
+
 ## Bugs
 ### Views Error
 In my index view, I had made the error where I was rendering a tuple rather than calling a function:
