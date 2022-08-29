@@ -53,6 +53,8 @@ Endless Explorer is an ecommerce website selling camping gear. Users can browse 
 - python3 manage.py migrate --plan
 - migrate.
 - register product model in products/admin.py
+- from .models import Product
+- admin.site.register(Product)
 
 ## Bugs
 ### Views Error
@@ -66,6 +68,13 @@ Luckily, this error was caught very early in the project. Changing the line to c
 
 ## Credits:
 - Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
+- Aluminium Teapot image: https://www.aliexpress.com/item/1005004112230217.html
+- Camping Thermal image: https://www.aliexpress.com/item/1005004215204462.html
+- Cutlery Set image: https://www.aliexpress.com/item/1005004112211074.html
+- Foldable Cutlery image: https://www.aliexpress.com/item/1005004223338581.html
+- Credit Card Multitool image: https://www.aliexpress.com/item/1005004106124768.html
+- Water Purifier image: https://www.aliexpress.com/item/1005004112186122.html
+- Carbiner image: https://www.aliexpress.com/item/1005004404157227.html
 
 # Things from CI Readme
 ## Gitpod Reminders
