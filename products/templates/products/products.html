@@ -9,8 +9,32 @@
     <div class="container">
         <div class="row">
             <div class="column">
-                {{ products }}
+                <h2>Products</h2>
+                <hr>
             </div>
         </div>
+        
+        <!-- Modified from https://getbootstrap.com/docs/4.6/components/card/#grid-cards -->
+        <div class="row row-cols-1 row-cols-md-3">
+            {% for product in products %}
+                <div class="col mb-4">
+                    <div class="card h-100">
+                        <!-- This logic from Boutique Ado sample project. -->
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                        {% else %}
+                            <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ product.name }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p class="card-text">€ {{ product.price }}</p>
+                        </div>
+                        <!-- Add in if product.sale_price -->
+                    </div>
+                </div>
+            {% endfor %}
+          </div>
+
     </div>
 {% endblock %}
