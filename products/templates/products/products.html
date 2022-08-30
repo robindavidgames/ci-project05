@@ -14,18 +14,24 @@
             </div>
         </div>
         
+        <!-- List of products -->
         <!-- Modified from https://getbootstrap.com/docs/4.6/components/card/#grid-cards -->
-        <div class="row row-cols-1 row-cols-md-3">
+        <div class="row row-cols-1 row-cols-md-4">
             {% for product in products %}
+
+                <!-- Present a card for the product -->
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <!-- This logic from Boutique Ado sample project. -->
+
+                        <!-- Show product image, if available. Else show a placeholder. -->
                         {% if product.image %}
                             <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
                         {% else %}
                             <!-- <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ product.name }}"> -->
                             <img src="../media/noimage.png" class="card-img-top" alt="{{ product.name }}">
                         {% endif %}
+
+                        <!-- Show product details. Then if it is on sale, show the sale price. Else, normal price. -->
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
                             <p class="card-text">{{ product.description }}</p>
@@ -36,11 +42,19 @@
                                 <p class="card-text">€{{ product.price }}</p>
                             {% endif %}
                         </div>
-                        <!-- Add in if product.sale_price -->
+
+                        <!-- Show product rating in the footer. -->
+                        <div class="card-footer">
+                            {% if product.rating %}
+                                <small class="text-muted">{{ product.rating }}</small>
+                            {% else %}
+                                <small class="text-muted">No product rating.</small>
+                            {% endif %}
+                        </div>
+
                     </div>
                 </div>
             {% endfor %}
-          </div>
-
+        </div>
     </div>
 {% endblock %}
