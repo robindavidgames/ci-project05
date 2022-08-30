@@ -10,3 +10,12 @@ body {
 /* .large-text {
   font-size: large;
 } */
+
+.xxlarge-text {
+  font-size: xx-large;
+}
+
+.strike-through {
+  text-decoration-line: line-through;
+  color: red;
+}

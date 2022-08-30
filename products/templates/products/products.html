@@ -23,12 +23,18 @@
                         {% if product.image %}
                             <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
                         {% else %}
-                            <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ product.name }}">
+                            <!-- <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ product.name }}"> -->
+                            <img src="../media/noimage.png" class="card-img-top" alt="{{ product.name }}">
                         {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">{{ product.name }}</h5>
                             <p class="card-text">{{ product.description }}</p>
-                            <p class="card-text">€ {{ product.price }}</p>
+                            {% if product.sale_price %}
+                                <p class="card-text strike-through">Was: €{{ product.price }}</p>
+                                <p class="card-text">Now: €{{ product.sale_price }}</p>
+                            {% else %}
+                                <p class="card-text">€{{ product.price }}</p>
+                            {% endif %}
                         </div>
                         <!-- Add in if product.sale_price -->
                     </div>

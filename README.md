@@ -75,6 +75,7 @@ Luckily, this error was caught very early in the project. Changing the line to c
 - Credit Card Multitool image: https://www.aliexpress.com/item/1005004106124768.html
 - Water Purifier image: https://www.aliexpress.com/item/1005004112186122.html
 - Carbiner image: https://www.aliexpress.com/item/1005004404157227.html
+- Hunting Bag image: https://www.aliexpress.com/item/1005003050642045.html
 
 # Things from CI Readme
 ## Gitpod Reminders
