@@ -46,7 +46,7 @@
                         <!-- Show product rating in the footer. -->
                         <div class="card-footer">
                             {% if product.rating %}
-                                <small class="text-muted">{{ product.rating }}</small>
+                                <small class="text-muted">Average rating: {{ product.rating }}</small>
                             {% else %}
                                 <small class="text-muted">No product rating.</small>
                             {% endif %}
