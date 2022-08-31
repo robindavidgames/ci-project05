@@ -9,52 +9,40 @@
     <div class="container">
         <div class="row">
             <div class="column">
-                <h2>Products</h2>
+                <h2>{{ product.name }}</h2>
                 <hr>
             </div>
         </div>
         
-        <!-- List of products -->
-        <!-- Modified from https://getbootstrap.com/docs/4.6/components/card/#grid-cards -->
-        <div class="row row-cols-1 row-cols-md-4">
-            {% for product in products %}
+        <!-- Product image. -->
+        <div>
+            {% if product.image %}
+                <!-- Open image in a new window. -->
+                <a href="{{ product.image.url }}" target="_blank">
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                </a>
+            {% else %}
+                <!-- <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ product.name }}"> -->
+                <img src="../media/noimage.png" class="card-img-top" alt="{{ product.name }}">
+            {% endif %}
+        </div>
 
-                <!-- Present a card for the product -->
-                <div class="col mb-4">
-                    <div class="card h-100">
-
-                        <!-- Show product image, if available. Else show a placeholder. -->
-                        {% if product.image %}
-                            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                        {% else %}
-                            <!-- <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ product.name }}"> -->
-                            <img src="../media/noimage.png" class="card-img-top" alt="{{ product.name }}">
-                        {% endif %}
-
-                        <!-- Show product details. Then if it is on sale, show the sale price. Else, normal price. -->
-                        <div class="card-body">
-                            <h5 class="card-title">{{ product.name }}</h5>
-                            <p class="card-text">{{ product.description }}</p>
-                            {% if product.sale_price %}
-                                <p class="card-text strike-through">Was: €{{ product.price }}</p>
-                                <p class="card-text">Now: €{{ product.sale_price }}</p>
-                            {% else %}
-                                <p class="card-text">€{{ product.price }}</p>
-                            {% endif %}
-                        </div>
-
-                        <!-- Show product rating in the footer. -->
-                        <div class="card-footer">
-                            {% if product.rating %}
-                                <small class="text-muted">Average rating: {{ product.rating }}</small>
-                            {% else %}
-                                <small class="text-muted">No product rating.</small>
-                            {% endif %}
-                        </div>
-
-                    </div>
-                </div>
-            {% endfor %}
+        <!-- Product details, rating, add to bag. -->
+        <div>
+            {% if product.sale_price %}
+                <p class="strike-through">Was: €{{ product.price }}</p>
+                <p>Now: €{{ product.sale_price }}</p>
+            {% else %}
+                <p>€{{ product.price }}</p>
+            {% endif %}
+            <hr>
+            {% if product.rating %}
+                <small>Average rating: {{ product.rating }}</small>
+            {% else %}
+                <small>No product rating.</small>
+            {% endif %}
+            <hr>
+            <p>{{ product.description }}</p>
         </div>
     </div>
 {% endblock %}
