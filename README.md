@@ -66,6 +66,9 @@ Luckily, this error was caught very early in the project. Changing the line to c
 
     return render(request, 'home/index.html')
 
+### Sorting Error
+When sorting by price, the products view does not consider that some products may be on sale.
+
 ## Credits:
 - Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
 - Aluminium Teapot image: https://www.aliexpress.com/item/1005004112230217.html

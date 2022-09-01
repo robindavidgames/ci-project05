@@ -4,7 +4,7 @@
 <!-- {% block page_header %}
 {% endblock %} -->
 
-<!-- Modified from Boutique Ado project -->
+<!-- This block heavily modified from Boutique Ado project -->
 {% block content %}
     <div class="container">
         <div class="row">
@@ -49,6 +49,12 @@
 
                         <!-- Show product rating in the footer. -->
                         <div class="card-footer">
+                            <small class="text-muted">Category: 
+                                <a href="{% url 'products' %}?category={{ product.category }}">
+                                    {{ product.category }}
+                                </a>
+                            </small>
+                            <br>
                             {% if product.rating %}
                                 <small class="text-muted">Average rating: {{ product.rating }}</small>
                             {% else %}
