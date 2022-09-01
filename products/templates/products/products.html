@@ -18,6 +18,13 @@
                     <h2>Products</h2>
                 {% endif %}
                 <hr>
+                {% if products|length == 0 %}
+                    <p>No products found for search term: <strong>"{{ search_term }}"</strong></p>
+                {% elif products|length == 1 %}
+                    <p>{{ products|length }} Product{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}</p>
+                {% else %}
+                    <p>{{ products|length }} Products{% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}</p>
+                {% endif %}
             </div>
         </div>
         
