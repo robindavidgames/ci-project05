@@ -47,14 +47,16 @@
                             {% endif %}
                         </div>
 
-                        <!-- Show product rating in the footer. -->
+                        <!-- Show product rating and category in the footer. -->
                         <div class="card-footer">
-                            <small class="text-muted">Category: 
-                                <a href="{% url 'products' %}?category={{ product.category }}">
-                                    {{ product.category }}
-                                </a>
-                            </small>
-                            <br>
+                            {% if product.category %}
+                                <small class="text-muted">Category: 
+                                    <a href="{% url 'products' %}?category={{ product.category }}">
+                                        {{ product.category.friendly_name }}
+                                    </a>
+                                </small>
+                                <br>
+                            {% endif %}
                             {% if product.rating %}
                                 <small class="text-muted">Average rating: {{ product.rating }}</small>
                             {% else %}

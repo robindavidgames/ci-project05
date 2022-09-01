@@ -36,6 +36,14 @@
                 <p>€{{ product.price }}</p>
             {% endif %}
             <hr>
+            {% if product.category %}
+                <small class="text-muted">Category: 
+                    <a href="{% url 'products' %}?category={{ product.category }}">
+                        {{ product.category.friendly_name }}
+                    </a>
+                </small>
+                <br>
+            {% endif %}
             {% if product.rating %}
                 <small>Average rating: {{ product.rating }}</small>
             {% else %}
