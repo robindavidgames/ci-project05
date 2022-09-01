@@ -20,7 +20,7 @@
                     Browse Products
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{% url 'products' %}">All Products</a>
+                    <a class="dropdown-item" href="{% url 'products' %}?sort=rating&direction=asc">All Products</a>
                     <!-- I can add additional categories to the search by seperating them with a comma with no space. -->
                     <a class="dropdown-item" href="{% url 'products' %}?category=cooking">Cooking</a>
                     <a class="dropdown-item" href="{% url 'products' %}?category=food-and-drink">Food and Drink</a>
