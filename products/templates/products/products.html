@@ -9,7 +9,14 @@
     <div class="container">
         <div class="row">
             <div class="column">
-                <h2>Products</h2>
+                <!-- Present the category name as page title, if a category has been selected. -->
+                {% if current_categories %}
+                    {% for c in current_categories %}
+                        <h2>{{ c.friendly_name }}</h2>
+                    {% endfor %}
+                {% else %}
+                    <h2>Products</h2>
+                {% endif %}
                 <hr>
             </div>
         </div>
