@@ -5,5 +5,19 @@
 {% endblock %} -->
 
 {% block content %}
-    <div class="">It works!</div>
+<div class="container">
+    <div class="row">
+        <div class="column">
+            <h2>Shopping Bag</h2>
+            <hr>
+            {% if bag_items %}
+            {% else %}
+            <p>Your shopping bag is currently empty.</p>
+            <p>
+                <a class="dropdown-item" href="{% url 'products' %}?sort=rating&direction=asc">Shop for products.</a>
+            </p>
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}
