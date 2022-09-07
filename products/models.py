@@ -28,8 +28,9 @@ class Product(models.Model):
     sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
     description = models.TextField()
+    has_variants = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    sale_price = models.DecimalField(
+    old_price = models.DecimalField(
         max_digits=6,
         decimal_places=2,
         null=True,

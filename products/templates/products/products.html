@@ -53,9 +53,9 @@
                                 <h5 class="card-title">{{ product.name }}</h5>
                             </a>
                             <p class="card-text">{{ product.description }}</p>
-                            {% if product.sale_price %}
-                                <p class="card-text strike-through">Was: €{{ product.price }}</p>
-                                <p class="card-text">Now: €{{ product.sale_price }}</p>
+                            {% if product.old_price %}
+                                <p class="card-text strike-through">Was: €{{ product.old_price }}</p>
+                                <p class="card-text">Now: €{{ product.price }}</p>
                             {% else %}
                                 <p class="card-text">€{{ product.price }}</p>
                             {% endif %}

@@ -30,9 +30,9 @@
         <!-- Product details, rating, add to bag. -->
         <div>
             <!-- Price -->
-            {% if product.sale_price %}
-                <p class="strike-through">Was: €{{ product.price }}</p>
-                <p>Now: €{{ product.sale_price }}</p>
+            {% if product.old_price %}
+                <p class="card-text strike-through">Was: €{{ product.old_price }}</p>
+                <p class="card-text">Now: €{{ product.price }}</p>
             {% else %}
                 <p>€{{ product.price }}</p>
             {% endif %}

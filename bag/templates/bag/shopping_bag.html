@@ -28,9 +28,9 @@
                         <!-- Show product details. Then if it is on sale, show the sale price. Else, normal price. -->
                         <div class="card-body">
                             <h5 class="card-title">{{ item.product.name }}</h5>
-                            {% if item.product.sale_price %}
-                                <p class="card-text strike-through">Was: €{{ item.product.price }}</p>
-                                <p class="card-text">Now: €{{ item.product.sale_price }}</p>
+                            {% if product.old_price %}
+                                <p class="card-text strike-through">Was: €{{ product.old_price }}</p>
+                                <p class="card-text">Now: €{{ product.price }}</p>
                             {% else %}
                                 <p class="card-text">€{{ item.product.price }}</p>
                             {% endif %}
@@ -41,6 +41,11 @@
                     <p>Item total: {{ total|floatformat:2 }}</p>
                     <p>Shipping cost: {{ delivery|floatformat:2 }}</p>
                     <p>Total cost: {{ grand_total|floatformat:2 }}</p>
+                </div>
+                <div>
+                    <!-- Turn these into buttons. -->
+                    <p>Keep shopping.</p>
+                    <p>Checkout</p>
                 </div>
             {% else %}
             <p>Your shopping bag is currently empty.</p>
