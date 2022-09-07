@@ -11,6 +11,37 @@
             <h2>Shopping Bag</h2>
             <hr>
             {% if bag_items %}
+                <!-- {{ bag_items }} -->
+                <!-- Show items in the bag. Needs to show quantity and unit total. -->
+                {% for item in bag_items %}
+                    <div>
+                        <!-- Show product image, if available. Else show a placeholder. -->
+                        <div>
+                            {% if item.product.image %}
+                                <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.name }}">
+                            {% else %}
+                                <!-- <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ item.product.name }}"> -->
+                                <img src="../media/noimage.png" class="card-img-top" alt="{{ item.product.name }}">
+                            {% endif %}
+                        </div>
+
+                        <!-- Show product details. Then if it is on sale, show the sale price. Else, normal price. -->
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.product.name }}</h5>
+                            {% if item.product.sale_price %}
+                                <p class="card-text strike-through">Was: €{{ item.product.price }}</p>
+                                <p class="card-text">Now: €{{ item.product.sale_price }}</p>
+                            {% else %}
+                                <p class="card-text">€{{ item.product.price }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+                <div>
+                    <p>Item total: {{ total|floatformat:2 }}</p>
+                    <p>Shipping cost: {{ delivery|floatformat:2 }}</p>
+                    <p>Total cost: {{ grand_total|floatformat:2 }}</p>
+                </div>
             {% else %}
             <p>Your shopping bag is currently empty.</p>
             <p>
