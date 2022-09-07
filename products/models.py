@@ -29,6 +29,9 @@ class Product(models.Model):
     name = models.CharField(max_length=254)
     description = models.TextField()
     has_variants = models.BooleanField(default=False, null=True, blank=True)
+    variant_one = models.CharField(max_length=254, null=True, blank=True)
+    variant_two = models.CharField(max_length=254, null=True, blank=True)
+    variant_three = models.CharField(max_length=254, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     old_price = models.DecimalField(
         max_digits=6,

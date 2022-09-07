@@ -67,7 +67,7 @@ Luckily, this error was caught very early in the project. Changing the line to c
     return render(request, 'home/index.html')
 
 ### Sorting Error
-When sorting by price, the products view does not consider that some products may be on sale.
+When sorting by price, the products view does not consider that some products may be on sale. In order to fix this, I changed the product model so that "price" always represents the current price. Historical prices are then stored as "old_price", so that the original price can be referred to the on the site. If a product has an old_price, then it will be displayed as if it is on sale.
 
 ## Credits:
 - Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
