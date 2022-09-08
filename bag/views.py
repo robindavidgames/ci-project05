@@ -38,10 +38,21 @@ def add_to_bag(request, item_id):
         # product_variant = request.POST('variant')
         # bag[item_id] = {'items_by_variant': {product_variant: quantity}}
     
+    # Check if item has a variant
     if 'variant' in request.POST:
         print(request.POST)
         variant = request.POST.get('variant')
-        bag[item_id] = {'items_by_variant': {variant: quantity}}
+        # If it has a variant, check if there is already one of that style.
+        # If not, add a new item. If so, add one to existing item.
+        if item_id in list(bag.keys()):
+            if variant in bag[item_id]['items_by_variant'].keys():
+                bag[item_id]['items_by_variant'][variant] += quantity
+            else:
+                bag[item_id]['items_by_variant'][variant] = quantity
+        else:
+            bag[item_id] = {'items_by_variant': {variant: quantity}}
+    # If item doesn't have a variant, create a standard entry.
+    # Update item entry, if it is already in the bag.
     else:
         if item_id in list(bag.keys()):
             bag[item_id] += quantity
