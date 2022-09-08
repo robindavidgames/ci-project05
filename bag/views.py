@@ -12,13 +12,42 @@ def add_to_bag(request, item_id):
 
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
+    # product_variant = None
+
+    # if 'variant' in request.POST:
+    #     product_variant = request.POST('variant')
+
     bag = request.session.get('bag', {})
 
-    if item_id in list(bag.keys()):
-        bag[item_id] += quantity
+    # if product_variant:
+    #     if item_id in list(bag.keys()):
+    #         if variant in bag[item_id]['items_by_variant'].keys():
+    #             bag[item_id]['items_by_variant'][variant] += quantity
+    #         else:
+    #             bag[item_id]['items_by_variant'][variant] = quantity
+    #     else:
+    #         bag[item_id] = {'items_by_variant': {variant: quantity}}
+
+    # if 'variant' in request.POST:
+        # if item_id in list(bag.keys()):
+        #     if variant in bag[item_id]['items_by_variant'].keys():
+        #         bag[item_id]['items_by_variant'][variant] += quantity
+        #     else:
+        #         bag[item_id]['items_by_variant'][variant] = quantity
+        # else:
+        # product_variant = request.POST('variant')
+        # bag[item_id] = {'items_by_variant': {product_variant: quantity}}
+    
+    if 'variant' in request.POST:
+        print(request.POST)
+        variant = request.POST.get('variant')
+        bag[item_id] = {'items_by_variant': {variant: quantity}}
     else:
-        bag[item_id] = quantity
+        if item_id in list(bag.keys()):
+            bag[item_id] += quantity
+        else:
+            bag[item_id] = quantity
 
     request.session['bag'] = bag
-    # print(request.session['bag'])
+    print(request.session['bag'])
     return redirect(redirect_url)

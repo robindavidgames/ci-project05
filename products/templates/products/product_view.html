@@ -47,7 +47,8 @@
                             <input type="number" name="varaint" value="1" min="1" max="99" data-item_id="{{ product.id }}" id="variant_{{ product.id }}">
                         </div> -->
                         <label for="variant">Choose a style:</label>
-                        <select id="variant_{{ product.id }}" name="variant">
+                        <!-- <select id="variant_{{ product.id }}" name="variant"> -->
+                        <select id="variant_picker" name="variant">
                             {% if product.variant_one %}
                                 <option value="{{ product.variant_one }}">{{ product.variant_one }}</option>
                             {% endif %}

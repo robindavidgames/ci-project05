@@ -11,7 +11,10 @@
             <h2>Shopping Bag</h2>
             <hr>
             {% if bag_items %}
-                <!-- {{ bag_items }} -->
+                {{ bag_items }}
+                <br>
+                {{ request.session.bag }}
+                <br>
                 <!-- Show items in the bag. Needs to show quantity and unit total. -->
                 {% for item in bag_items %}
                     <div>
