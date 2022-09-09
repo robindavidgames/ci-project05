@@ -18,21 +18,25 @@ def bag_contents(request):
             product = get_object_or_404(Product, pk=item_id)
             total += item_data * product.price
             product_count += item_data
+            product_subtotal = item_data * product.price
             bag_items.append({
                 'item_id': item_id,
                 'quantity': item_data,
                 'product': product,
+                'product_subtotal': product_subtotal,
             })
         else:
             product = get_object_or_404(Product, pk=item_id)
             for variant, quantity in item_data['items_by_variant'].items():
                 total += quantity * product.price
                 product_count += quantity
+                product_subtotal = quantity * product.price
                 bag_items.append({
                     'item_id': item_id,
                     'quantity': item_data,
                     'product': product,
                     'variant': variant,
+                    'product_subtotal': product_subtotal,
                 })
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
