@@ -46,7 +46,7 @@
 
                             <!-- Show quantity, quantity controls, and item subtotal. -->
                             <p>Quantity: {{ item.quantity }}</p>
-                            <form class="update-form" method="POST" action="">
+                            <form class="update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
                                 <!-- Form from Boutique Ado -->
                                 {% csrf_token %}
                                 <div class="input-group">
