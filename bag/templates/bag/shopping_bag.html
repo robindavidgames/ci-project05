@@ -10,15 +10,18 @@
         <div class="column">
             <h2>Shopping Bag</h2>
             <hr>
+
             <!-- If there are items in the bag. -->
             {% if bag_items %}
                 {{ bag_items }}
                 <br>
                 {{ request.session.bag }}
                 <br>
+
                 <!-- Show items in the bag. Needs to show quantity and unit total. -->
                 {% for item in bag_items %}
                     <div>
+
                         <!-- Show product image, if available. Else show a placeholder. -->
                         <div>
                             {% if item.product.image %}
@@ -29,16 +32,45 @@
                             {% endif %}
                         </div>
 
-                        <!-- Show product details. Then if it is on sale, show the sale price. Else, normal price. -->
+                        <!-- Show product details. -->
                         <div class="card-body">
                             <h5 class="card-title">{{ item.product.name }}</h5>
+
+                            <!-- If it is on sale, show the sale price with normal price struck out. Else, show normal price. -->
                             {% if item.product.old_price %}
                                 <p class="card-text strike-through">Was: €{{ item.product.old_price }}</p>
                                 <p class="card-text">Now: €{{ item.product.price }}</p>
                             {% else %}
                                 <p class="card-text">€{{ item.product.price }}</p>
                             {% endif %}
+
+                            <!-- Show quantity, quantity controls, and item subtotal. -->
                             <p>Quantity: {{ item.quantity }}</p>
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <button class="decrement-qty btn btn-black rounded-0" 
+                                            data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                            <span class="icon">
+                                                <i class="fas fa-minus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <input class="form-control qty_input" type="number"
+                                        name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                        data-item_id="{{ item.item_id }}"
+                                        id="id_qty_{{ item.item_id }}">
+                                    <div class="input-group-append">
+                                        <button class="increment-qty btn btn-black rounded-0"
+                                            data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                            <span class="icon">
+                                                <i class="fas fa-plus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
                             <p>Subtotal: {{ item.product_subtotal }}</p>
                         </div>
                     </div>

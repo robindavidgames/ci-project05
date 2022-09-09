@@ -33,7 +33,7 @@ def bag_contents(request):
                 product_subtotal = quantity * product.price
                 bag_items.append({
                     'item_id': item_id,
-                    'quantity': item_data,
+                    'quantity': quantity,
                     'product': product,
                     'variant': variant,
                     'product_subtotal': product_subtotal,
