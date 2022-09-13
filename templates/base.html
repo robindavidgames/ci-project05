@@ -42,11 +42,7 @@
         {% include 'includes/main_nav.html' %}
 
         {% if messages %}
-            <div class="message-container">
-                {% for message in messages %}
-                    {% include 'includes/toasts/toast_success.html' %}
-                {% endfor %}
-            </div>
+        <div class="message-container"></div>
         {% endif %}
 
         {% block page_header %}
@@ -56,9 +52,6 @@
         {% endblock %}
 
         {% block extra_js %}
-            <script type="text/javascript">
-                $('.toast').toast('show');
-            </script>
         {% endblock %}
     </body>
 </html>

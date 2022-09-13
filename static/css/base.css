@@ -3,6 +3,14 @@ body {
   padding-top: 4.5rem;
 }
 
+/* .clear {
+  clear: both;
+} */
+
+/* .large-text {
+  font-size: large;
+} */
+
 .xxlarge-text {
   font-size: xx-large;
 }
@@ -14,6 +22,7 @@ body {
 
 .update-link, .remove-item {
   cursor: pointer;
+<<<<<<< HEAD
 }
 
 /* .message-container {
@@ -36,4 +45,6 @@ body {
 
 .toast-capper {
   height: 2px;
+=======
+>>>>>>> parent of 9ffa1c1 (Begin implementing toasts, reset database.)
 }
