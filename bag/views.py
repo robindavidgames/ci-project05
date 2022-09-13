@@ -1,14 +1,18 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.contrib import messages
+from products.models import Product
 
 def view_bag(request):
     """ A view to return the shopping_bag page. """
 
     return render(request, 'bag/shopping_bag.html')
 
+
 # Heavily modified from Boutique Ado project.
 def add_to_bag(request, item_id):
     """ Add quantity of an item to the shopping bag. """
 
+    product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})
@@ -34,6 +38,7 @@ def add_to_bag(request, item_id):
             bag[item_id] += quantity
         else:
             bag[item_id] = quantity
+            messages.success(request, f'Added {product.name} to your bag')
 
     request.session['bag'] = bag
     return redirect(redirect_url)

@@ -3,14 +3,6 @@ body {
   padding-top: 4.5rem;
 }
 
-/* .clear {
-  clear: both;
-} */
-
-/* .large-text {
-  font-size: large;
-} */
-
 .xxlarge-text {
   font-size: xx-large;
 }
@@ -22,4 +14,26 @@ body {
 
 .update-link, .remove-item {
   cursor: pointer;
+}
+
+/* .message-container {
+  position: fixed;
+  top: 72px;
+  right: 15px;
+  z-index: 999999;
+} */
+
+.message-container {
+  position: fixed;
+  top: 72px;
+  right: 15px;
+  z-index: 99999999999;
+}
+
+.custom-toast {
+  overflow: visible;
+}
+
+.toast-capper {
+  height: 2px;
 }
