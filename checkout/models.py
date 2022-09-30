@@ -1,4 +1,10 @@
+import uuid
 from django.db import models
+from django.db.models import Sum
+from django.conf import settings
+
+from products.models import Product
+
 
 class Order(models.Model):
     """
@@ -11,10 +17,61 @@ class Order(models.Model):
     country = models.CharField(max_length=128, null=False, blank=False)
     postcode = models.CharField(max_length=16, null=True, blank=False)
     town_city = models.CharField(max_length=128, null=False, blank=False)
-    street_address_1 = models.CharField(max_length=256, null=False, blank=False)
-    street_address_2 = models.CharField(max_length=256, null=False, blank=False)
+    street_address_1 = models.CharField(
+        max_length=256,
+        null=False,
+        blank=False
+        )
+    street_address_2 = models.CharField(
+        max_length=256,
+        null=False,
+        blank=False
+        )
     county = models.CharField(max_length=128, null=False, blank=False)
     date = models.DateTimeField(auto_now_add=True)
-    delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
-    order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
-    grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    delivery_cost = models.DecimalField(
+        max_digits=6,
+        decimal_places=2,
+        null=False,
+        default=0
+        )
+    order_total = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        null=False,
+        default=0
+        )
+    grand_total = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        null=False,
+        default=0
+        )
+
+
+class OrderLineItem(models.Model):
+    """
+    Model to iterate though and add items to an order.
+    """
+    order = models.ForeignKey(
+        Order,
+        null=False,
+        blank=False,
+        on_delete=models.CASCADE,
+        related_name='lineitems'
+        )
+    product = models.ForeignKey(
+        Product,
+        null=False,
+        blank=False,
+        on_delete=models.CASCADE
+        )
+    product_variant = models.CharField(max_length=128, null=True, blank=True)
+    quantity = models.IntegerField(null=False, blank=False, default=0)
+    lineitem_total = models.DecimalField(
+        max_digits=6,
+        decimal_places=2,
+        null=False,
+        blank=False,
+        editable=False
+        )
