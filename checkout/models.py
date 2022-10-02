@@ -47,13 +47,13 @@ class Order(models.Model):
         null=False,
         default=0
         )
-    
+
     def _generate_order_number(self):
         """
         Generate an order number using UUID.
         """
         return uuid.uuid4().hex.upper()
-    
+
     def update_total(self):
         """
         Update the total, accouting for delivery costs.
@@ -65,7 +65,7 @@ class Order(models.Model):
             self.delivery_cost = 0
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
-    
+
     def save(self, *args, **kwargs):
         """
         Overwrite save method to set the order number if it has not aready
@@ -74,7 +74,7 @@ class Order(models.Model):
         if not self.order_number:
             self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
-    
+
     def __str__(self):
         return self.order_number
 
@@ -105,10 +105,10 @@ class OrderLineItem(models.Model):
         blank=False,
         editable=False
         )
-    
+
     def __str__(self):
         return f'SKU {self.product.sku} on {self.order.order_number}'
-    
+
     def save(self, *args, **kwargs):
         """
         Overwrite save method to set the lineiten total and update the order
