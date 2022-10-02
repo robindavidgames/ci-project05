@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+<!-- {% block page_header %}
+{% endblock %} -->
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="column">
+            <h2>Checkout</h2>
+            <hr>
+            <p>Please fill out the form below to checkout.</p>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+    {{ block.super }}
+    {% include 'products/includes/quantity_input_script.html' %}
+
+    <!-- Modified from Boutique Ado. -->
+    <script type="text/javascript">
+        // Update quantity on click.
+        $('.update-link').click(function(e) {
+            var form = $(this).prev('.update-form');
+            form.submit();
+        })
+
+        // Remove item and reload on click
+        $('.remove-item').click(function(e) {
+            var csrfToken = "{{ csrf_token }}";
+            var itemId = $(this).attr('id').split('remove_')[1];
+            var variant = $(this).data('variant');
+            var url = `/bag/remove/${itemId}/`;
+            var data = {'csrfmiddlewaretoken': csrfToken, 'variant': variant};
+
+            $.post(url, data)
+            .done(function() {
+                location.reload();
+            });
+        })
+    </script>
+{% endblock %}
