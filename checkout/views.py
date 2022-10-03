@@ -10,6 +10,9 @@ import stripe
 
 # Modified from Boutique Ado sample project
 def checkout(request):
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
+
     bag = request.session.get('bag', {})
     # To prevent a user typing the checkout URL.
     if not bag:
@@ -19,6 +22,14 @@ def checkout(request):
     current_bag = bag_contents(request)
     total = current_bag['grand_total']
     stripe_total = round(total * 100)
+    stripe.api_key = stripe_secret_key
+    intent = stripe.PaymentIntent.create(
+        amount=stripe_total,
+        currency=settings.STRIPE_CURRENCY,
+    )
+
+    print(intent)
+
     order_form = OrderForm()
     template = 'checkout/checkout.html'
     context = {
