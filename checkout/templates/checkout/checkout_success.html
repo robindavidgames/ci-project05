@@ -5,9 +5,62 @@
 <div class="container">
     <div class="row">
         <div class="column">
-            <h2>Thank You</h2>
-            <p>Your order is being processed and a confirmation email is on the way! Order information is below.</p>
+            <h2>Thank You {{ order.full_name }}</h2>
+            <p>Your order is being processed and a confirmation email is on the way to {{ order.email }}! Order information is below.</p>
             <hr>
+            <div>
+                <p>Order Information</p>
+            </div>
+
+            <div>
+                <p>Order number: {{ order.order_number }}</p>
+                <p>Order date: {{ order.date }}</p>
+            </div>
+
+            <hr>
+
+            <div>
+                <p>Order Details</p>
+            </div>
+
+            {% for item in order.lineitems.all %}
+            <div>
+                <p>{{ item.product.name }}</p>
+                <!-- Add variant details here. -->
+                <p>{{ item.quantity }} @ ${{ item.product.price }} each</p>
+            </div>
+            {% endfor %}
+
+            <hr>
+
+            <div>
+                <p>Delivering to:</p>
+            </div>
+            
+            <div>
+                <p>{{ order.full_name }}</p>
+                <p>{{ order.street_address_1 }}</p>
+                <p>{{ order.street_address_2 }}</p>
+                <p>{{ order.town_or_city }}</p>
+                <p>{{ order.county }}</p>
+                {% if order.postcode %}
+                    <p>{{ order.postcode }}</p>
+                {% endif %}
+                <p>{{ order.country }}</p>
+                <p>{{ order.phone }}</p>
+            </div>
+
+            <hr>
+
+            <div>
+                <p>Billing Details:</p>
+            </div>
+            
+            <div>
+                <p>{{ order.order_total }}</p>
+                <p>{{ order.delivery_cost }}</p>
+                <p>{{ order.grand_total }}</p>
+            </div>
 
         </div>
     </div>
