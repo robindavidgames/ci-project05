@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
 
 from .forms import OrderForm
-from .models import OrderLineItem
+from .models import Order, OrderLineItem
 from bag.contexts import bag_contents
 from products.models import Product
 
@@ -39,7 +39,8 @@ def checkout(request):
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
-                        quantity=item_data,
+                        # quantity=item_data,
+                        # quantity=order_quantity,
                     )
                     order_line_item.save()
 
