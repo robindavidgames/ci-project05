@@ -6,6 +6,7 @@ from django.conf import settings
 from django_countries.fields import CountryField
 
 from products.models import Product
+from profiles.models import UserProfile
 
 # Models in this file modified from Boutique Ado sample project.
 class Order(models.Model):
@@ -13,6 +14,13 @@ class Order(models.Model):
     Model representing user orders.
     """
     order_number = models.CharField(max_length=32, null=False, editable=False)
+    user_profile = models.ForeignKey(
+        UserProfile,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='orders'
+        )
     full_name = models.CharField(max_length=64, null=False, blank=False)
     email = models.CharField(max_length=256, null=False, blank=False)
     phone = models.CharField(max_length=64, null=False, blank=False)
