@@ -26,7 +26,7 @@ class OrderForm(forms.ModelForm):
             'town_city': 'Town or City',
             'street_address_1': 'Street Address 1',
             'street_address_2': 'Street Address 2',
-            'county': 'County',
+            'county': 'State or County',
         }
 
         # Makes the cursor begin in the full_name field.
