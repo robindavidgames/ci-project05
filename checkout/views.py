@@ -5,8 +5,8 @@ from django.conf import settings
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
-from bag.contexts import bag_contents
 from products.models import Product
+from bag.contexts import bag_contents
 
 import stripe
 import json
@@ -14,7 +14,7 @@ import json
 
 # Modified from Boutique Ado sample project
 @require_POST
-def cache_checkout_date(request):
+def cache_checkout_data(request):
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
