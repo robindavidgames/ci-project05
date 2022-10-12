@@ -3,6 +3,8 @@ from django.db import models
 from django.db.models import Sum
 from django.conf import settings
 
+from django_countries.fields import CountryField
+
 from products.models import Product
 
 # Models in this file modified from Boutique Ado sample project.
@@ -14,7 +16,7 @@ class Order(models.Model):
     full_name = models.CharField(max_length=64, null=False, blank=False)
     email = models.CharField(max_length=256, null=False, blank=False)
     phone = models.CharField(max_length=64, null=False, blank=False)
-    country = models.CharField(max_length=128, null=False, blank=False)
+    country = CountryField(blank_label='Country *', null=False, blank=False)
     postcode = models.CharField(max_length=16, null=True, blank=False)
     town_city = models.CharField(max_length=128, null=False, blank=False)
     street_address_1 = models.CharField(
