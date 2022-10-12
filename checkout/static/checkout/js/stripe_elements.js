@@ -51,6 +51,8 @@ form.addEventListener('submit', function(ev) {
     ev.preventDefault();
     card.update({ 'disabled': true});
     $('#submit-button').attr('disabled', true);
+    // $('#payment-form').fadeToggle(100);
+    // $('#loading-overlay').fadeToggle(100);
 
     var saveInfo = Boolean($('#id-save-info').attr('checked'));
     // From using {% csrf_token %} in the form
@@ -79,10 +81,10 @@ form.addEventListener('submit', function(ev) {
                     }
                 }
             },
-            shipping_details: {
+            shipping: {
                 name: $.trim(form.full_name.value),
                 phone: $.trim(form.phone.value),
-                address:{
+                address: {
                     line1: $.trim(form.street_address_1.value),
                     line2: $.trim(form.street_address_2.value),
                     city: $.trim(form.town_city.value),
@@ -90,7 +92,7 @@ form.addEventListener('submit', function(ev) {
                     postal_code: $.trim(form.postcode.value),
                     state: $.trim(form.county.value),
                 }
-            }
+            },
         }).then(function(result) {
             if (result.error) {
                 var errorDiv = document.getElementById('card-errors');
@@ -100,6 +102,8 @@ form.addEventListener('submit', function(ev) {
                     </span>
                     <span>${result.error.message}</span>`;
                 $(errorDiv).html(html);
+                $('#payment-form').fadeToggle(100);
+                $('#loading-overlay').fadeToggle(100);
                 card.update({ 'disabled': false});
                 $('#submit-button').attr('disabled', false);
             } else {
