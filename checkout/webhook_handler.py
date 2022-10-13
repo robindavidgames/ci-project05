@@ -14,6 +14,8 @@ import time
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
 
+    print('Webhook is running...')
+
     def __init__(self, request):
         self.request = request
 
