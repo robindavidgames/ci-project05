@@ -10,5 +10,19 @@
             {{ profile }}
         </div>
     </div>
+    <div class="row">
+        <div class="column">
+            <p>User Details Form</p>
+            <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-black rounded-0">Update Information</button>
+            </form>
+        </div>
+        <div class="column">
+            <p>Order History</p>
+            {{ orders }}
+        </div>
+    </div>
 </div>
 {% endblock %}
