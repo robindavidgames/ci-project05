@@ -4,6 +4,7 @@ from .models import Product, Category
 # Modified from Boutique Ado sample project.
 
 class ProductForm(forms.ModelForm):
+    """Form for creating new product."""
 
     class Meta:
         model = Product
