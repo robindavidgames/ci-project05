@@ -76,6 +76,14 @@
                             {% else %}
                                 <small class="text-muted">No product rating.</small>
                             {% endif %}
+                            <!-- Links for superuser to edit and delete product. -->
+                            {% if request.user.is_superuser %}
+                                <br>
+                                <small class="text-muted">
+                                    <a href="{% url 'edit_product' product.id %}">Edit</a> | 
+                                    <a href="{% url 'delete_product' product.id %}">Delete</a>
+                                </small>
+                            {% endif %}
                         </div>
 
                     </div>
