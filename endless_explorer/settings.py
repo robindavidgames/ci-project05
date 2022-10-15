@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # DEBUG = True
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['endless-explorer.herokuapp.com', 'localhost', '*']
+ALLOWED_HOSTS = ['endless-explorer.herokuapp.com', 'localhost']
 
 
 # Application definition
