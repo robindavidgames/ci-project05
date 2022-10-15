@@ -56,6 +56,23 @@ Endless Explorer is an ecommerce website selling camping gear. Users can browse 
 - from .models import Product
 - admin.site.register(Product)
 
+### Deployment
+#### Deploying to Heroku
+- Create new app, give it a name, and choose closest region.
+- On Resources tab, create a Heroku Postgres add-on.
+- pip3 install dj_database_url
+- pip3 install psycopg2-binary
+- Freeze requirements: pip3 freeze > requirements.txt
+- Add import dj_database_url to settings.py
+- Comment out the default database configuration.
+- Create a new database and pass it the DATABASE_URL from Heroku app/settings/Config Vars
+
+DATABASES = {
+    'default': dj_database_url.parse()
+}
+
+- Now need to run migrations again. Begin with python3 manage.py showmigrations
+
 ## Bugs
 ### Views Error
 In my index view, I had made the error where I was rendering a tuple rather than calling a function:
