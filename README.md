@@ -94,6 +94,10 @@ DATABASES = {
 (if facing an error, downgrade Heroku version with: heroku stack:set heroku-20 -a endless-explorer
 then create a runtime.txt file containing: python-3.8.14)
 
+### Github
+- Connect app to github through the deploy tab on Heroku. 
+- Now enable automatic deploys so that github deploys also deploy to Heroku.
+
 ## Bugs
 ### Views Error
 In my index view, I had made the error where I was rendering a tuple rather than calling a function:
