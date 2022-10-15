@@ -71,7 +71,20 @@ DATABASES = {
     'default': dj_database_url.parse()
 }
 
-- Now need to run migrations again. Begin with python3 manage.py showmigrations
+- Now need to run migrations again. Begin with python3 manage.py showmigrations, then python3 manage.py migrate.
+- At this point, need to create database - importing it from a json if that was used.
+- Create a new superuser with python3 manage.py createsuperuser
+- Revert database changes before commiting, so that Heroku database URL doesn't end up in version control.
+- Install gunicorn and freeze into requirements file: pip3 install gunicorn
+- Create a Procfile to tell Heroku to create a web dyno.
+
+    web: gunicorn endless_explorer.wsgi:application
+
+- Log in to heroku: heroku login -i
+- Disable collect static: heroku config:set DISABLE_COLLECTSTATIC=1 --app endless-explorer
+- Update allowed hosts in settings.py
+
+    ALLOWED_HOSTS = ['endless-explorer.herokuapp.com', 'localhost']
 
 ## Bugs
 ### Views Error
