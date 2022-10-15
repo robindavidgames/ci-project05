@@ -121,15 +121,11 @@ WSGI_APPLICATION = 'endless_explorer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
-    'default': dj_database_url.parse('postgres://wonjhaqiehbjfu:4d58993792f1ca0f139593b0f7ffc5ba5ce87ac0d3477a305b688b99bb82bbee@ec2-54-170-90-26.eu-west-1.compute.amazonaws.com:5432/daslqk03063l59')
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
