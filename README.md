@@ -98,6 +98,61 @@ then create a runtime.txt file containing: python-3.8.14)
 - Connect app to github through the deploy tab on Heroku. 
 - Now enable automatic deploys so that github deploys also deploy to Heroku.
 
+### Create a new Secret Key
+- In settings/config vars, create SECRET_KEY
+- In settings.py replace the existing secret key with: SECRET_KEY = os.environ.get('SECRET_KEY', '')
+
+### Arrange Amazon S3 to host static files
+- Sign up for Amazon Web Services
+- Create an S3 bucket
+- Ensure bucket is public and ACLs enabled.
+- Under the bucket properties, enable Static Website Hosting.
+- Under the bucket permissions, paste in the following CORS configuration.
+
+    [
+        {
+            "AllowedHeaders": [
+                "Authorization"
+            ],
+            "AllowedMethods": [
+                "GET"
+            ],
+            "AllowedOrigins": [
+                "*"
+            ],
+            "ExposeHeaders": []
+        }
+    ]
+
+- In permissions/policies, use the policy generator.
+    - Policy type is S3 bucket policy.
+    - Allow all principals with *
+    - Set action to 'GetObject'
+    - Copy in ARN
+    - Click 'add statement' and 'generate policy'.
+    - Copy this policy into the bucket policy editor.
+    - Add /* to the end of the resource key before saving.
+- In the ACS (Access Control List), enable List for Everyone.
+- Back in the services menu, open IAM. Go to 'User Groups' and 'Create Group'.
+- Give the group a name and click, 'Create Group'.
+- Go to 'Policies' and 'Create Policy'.
+- Select the JSON tab and click 'Import Managed Policy'. Import the S3 Full Access policy.
+- Update the policy with the S3 ARN, like this:
+
+    "Resource": [
+        "arn:aws:s3:::endless-explorer",
+        "arn:aws:s3:::endless-explorer/*"
+    ]
+
+- Click through 'Tags' and 'Review'. Give the policy a name and a description and click 'Create Policy'.
+- Head back to the group, 'Permissions', 'Add Permissions', 'Attach Policies'. Select and attach the correct policy.
+- Create a user to add to the group on the 'Users' page. Click, 'Add User'.
+- Give the user a name and grant them programatic access.
+- Add the user to the correct group and click through 'Tags', 'Review', and 'Create User'.
+- Download the CSV file, which contains the User's access keys.
+
+### Configure Django to Access Amazon Services
+
 ## Bugs
 ### Views Error
 In my index view, I had made the error where I was rendering a tuple rather than calling a function:
