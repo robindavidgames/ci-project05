@@ -152,6 +152,36 @@ then create a runtime.txt file containing: python-3.8.14)
 - Download the CSV file, which contains the User's access keys.
 
 ### Configure Django to Access Amazon Services
+- Install boto3 and django-storages:
+
+    pip3 install boto3
+    pip3 install django-storages
+
+- And then freeze the requirements file so these are installed on Heroku.
+
+    pip3 freeze > requirements.txt
+
+- Add Storages to installed apps. And add the following settings to settings.py:
+
+    if 'USE_AWS' in os.environ:
+        AWS_STORAGE_BUCKET_NAME = 'endless-explorer'
+        AWS_S3_REGION_NAME = 'eu-west-1'
+        AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+        AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+- Add the ACCESS_KEY and SECRET_ACCESS_KEY config vars to Heroku. (they come from the downloaded CSV file)
+- Also add USE_AWS, set to 'True', and remove the DISABLE_COLLECTSTATIC variable.
+- Create a file in the base directory called custom_storages.py - and fill this in to tell Django to send static files to S3.
+- Update the settings file to indicate these instructions:
+
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
 ## Bugs
 ### Views Error
