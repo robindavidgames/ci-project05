@@ -42,4 +42,3 @@ class OrderForm(forms.ModelForm):
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
             # Remove form fields labels as placeholders do that job.
             self.fields[field].label = False
-            

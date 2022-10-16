@@ -59,6 +59,7 @@ def all_products(request):
 
     return render(request, 'products/products.html', context)
 
+
 def product_view(request, product_id):
     """ A view to return a specific product page """
 

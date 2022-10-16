@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
 
+
 def view_bag(request):
     """ A view to return the shopping_bag page. """
 
     return render(request, 'bag/shopping_bag.html')
+
 
 # Heavily modified from Boutique Ado project.
 def add_to_bag(request, item_id):
@@ -12,7 +14,7 @@ def add_to_bag(request, item_id):
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})
-    
+
     # Check if item has a variant
     if 'variant' in request.POST:
         variant = request.POST.get('variant')

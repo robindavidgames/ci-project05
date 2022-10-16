@@ -8,6 +8,7 @@ from django_countries.fields import CountryField
 from products.models import Product
 from profiles.models import UserProfile
 
+
 # Models in this file modified from Boutique Ado sample project.
 class Order(models.Model):
     """

@@ -10,6 +10,7 @@ import stripe
 # Modified from Boutique Ado project, which itself is modified
 # from Stripe documentation.
 
+
 @require_POST
 @csrf_exempt
 def webhook(request):
@@ -25,7 +26,7 @@ def webhook(request):
 
     try:
         event = stripe.Webhook.construct_event(
-        payload, sig_header, wh_secret
+            payload, sig_header, wh_secret
         )
     except ValueError as e:
         # Invalid payload
