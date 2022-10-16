@@ -152,6 +152,8 @@ then create a runtime.txt file containing: python-3.8.14)
 - Download the CSV file, which contains the User's access keys.
 
 ### Configure Django to Access Amazon Services
+#### Static Files
+
 - Install boto3 and django-storages:
 
     pip3 install boto3
@@ -182,6 +184,8 @@ then create a runtime.txt file containing: python-3.8.14)
 
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
+#### Media Files
 
 ## Bugs
 ### Views Error
