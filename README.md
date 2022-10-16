@@ -3,6 +3,23 @@ Endless Explorer is an ecommerce website selling camping gear. Users can browse 
 
 https://endless-explorer.herokuapp.com/
 
+## Features
+
+### Front Page
+
+### Browse by Category
+
+### Product Preview
+This uses a modified model.
+
+### Wishlist Items
+This uses a custom model.
+
+### User Profile
+#### User Address
+#### User Order History
+#### User Wishlist
+
 ## Project Setup
 ### Basics
 - Use CI Template
@@ -216,6 +233,12 @@ then create a runtime.txt file containing: python-3.8.14)
         EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
         DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
+### Invoke Linter
+
+To check for issues across the entire project:
+
+python3 -m flake8
+
 ## Bugs
 ### Views Error
 In my index view, I had made the error where I was rendering a tuple rather than calling a function:
@@ -231,6 +254,7 @@ When sorting by price, the products view does not consider that some products ma
 
 ## Credits:
 - Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
+- Much of the project is modified from the Boutique Ado sample project.
 - Placeholder image: https://www.flaticon.com/free-icons/picture
 - Aluminium Teapot image: https://www.aliexpress.com/item/1005004112230217.html
 - Camping Thermal image: https://www.aliexpress.com/item/1005004215204462.html
@@ -240,32 +264,3 @@ When sorting by price, the products view does not consider that some products ma
 - Water Purifier image: https://www.aliexpress.com/item/1005004112186122.html
 - Carbiner image: https://www.aliexpress.com/item/1005004404157227.html
 - Hunting Bag image: https://www.aliexpress.com/item/1005003050642045.html
-
-# Things from CI Readme
-## Gitpod Reminders
-
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
-
-`python3 -m http.server`
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.

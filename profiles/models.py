@@ -5,8 +5,8 @@ from django.dispatch import receiver
 
 from django_countries.fields import CountryField
 
-# Modified from Boutqiue Ado sample project.
 
+# Modified from Boutqiue Ado sample project.
 class UserProfile(models.Model):
     """
     A user profile model for maintaining default
@@ -25,6 +25,7 @@ class UserProfile(models.Model):
         return self.user.username
 
 
+# Modified from Boutqiue Ado sample project.
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     """
