@@ -94,15 +94,15 @@ DATABASES = {
 (if facing an error, downgrade Heroku version with: heroku stack:set heroku-20 -a endless-explorer
 then create a runtime.txt file containing: python-3.8.14)
 
-### Github
+#### Github
 - Connect app to github through the deploy tab on Heroku. 
 - Now enable automatic deploys so that github deploys also deploy to Heroku.
 
-### Create a new Secret Key
+#### Create a new Secret Key
 - In settings/config vars, create SECRET_KEY
 - In settings.py replace the existing secret key with: SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
-### Arrange Amazon S3 to host static files
+#### Arrange Amazon S3 to host static files
 - Sign up for Amazon Web Services
 - Create an S3 bucket
 - Ensure bucket is public and ACLs enabled.
@@ -151,8 +151,7 @@ then create a runtime.txt file containing: python-3.8.14)
 - Add the user to the correct group and click through 'Tags', 'Review', and 'Create User'.
 - Download the CSV file, which contains the User's access keys.
 
-### Configure Django to Access Amazon Services
-#### Static Files
+#### Configure Django to Access Amazon Services
 
 - Install boto3 and django-storages:
 
@@ -185,7 +184,35 @@ then create a runtime.txt file containing: python-3.8.14)
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
-#### Media Files
+#### Configure Stripe
+
+- Copy the Stripe API keys into the Heroku config vars.
+- Create a new Endpoint for the Stripe webhook, pointing to https://endless-explorer.herokuapp.com/checkout/wh/
+- Set the webhook to receive all events.
+- Reveal the webhook's signing secret and add this to the Heroku config vars.
+
+### Setting up Emails
+
+- Go to gmail settings, and seach for App Passwords.
+- Select "mail" and for the app, select "other" and type in a name for the app.
+- This grants a password that can be used as a config var in Heroku:
+
+    EMAIL_HOST_PASS as the password
+    EMAIL_HOST_USER as the gmail account
+
+- In settings.py, delete the EMAIL_BACKEND variable, the existing DEFAULT_FROM_EMAIL and paste in the following:
+
+    if 'DEVELOPMENT' in os.environ:
+        EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+        DEFAULT_FROM_EMAIL = 'endlessexplorer@example.com'
+    else:
+        EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+        EMAIL_USE_TLS = True
+        EMAIL_PORT = 587
+        EMAIL_HOST = 'smtp.gmail.com'
+        EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+        EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+        DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 ## Bugs
 ### Views Error
@@ -202,6 +229,7 @@ When sorting by price, the products view does not consider that some products ma
 
 ## Credits:
 - Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
+- Placeholder image: https://www.flaticon.com/free-icons/picture
 - Aluminium Teapot image: https://www.aliexpress.com/item/1005004112230217.html
 - Camping Thermal image: https://www.aliexpress.com/item/1005004215204462.html
 - Cutlery Set image: https://www.aliexpress.com/item/1005004112211074.html
