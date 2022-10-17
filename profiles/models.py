@@ -4,7 +4,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from django_countries.fields import CountryField
-from products.models import Product
 
 
 # Modified from Boutqiue Ado sample project.

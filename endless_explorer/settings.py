@@ -15,13 +15,6 @@ import os
 import dj_database_url
 
 # For handling secret key in environment.
-# from dotenv import load_dotenv
-# load_dotenv()
-
-# if os.path.exists("env.py"):
-#     import env
-
-# import os
 if os.path.exists("env.py"):
     import env
 
