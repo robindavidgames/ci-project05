@@ -26,25 +26,6 @@ class UserProfile(models.Model):
         return self.user.username
 
 
-# Custom class
-class Wishlist(models.Model):
-    """
-    Wishlist items to iterate through.
-    """
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    product = models.ForeignKey(
-        Product,
-        null=False,
-        blank=False,
-        on_delete=models.CASCADE
-        )
-    product_variant = models.CharField(max_length=128, null=True, blank=True)
-    # added_date = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.product.name
-
-
 # Modified from Boutqiue Ado sample project.
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):

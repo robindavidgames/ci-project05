@@ -17,7 +17,7 @@ class Category(models.Model):
         return self.friendly_name
 
 
-# Adapted from Boutique Ado sample project.
+# Significantly modified from Boutique Ado sample project.
 class Product(models.Model):
     category = models.ForeignKey(
         'Category',
