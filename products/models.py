@@ -31,8 +31,12 @@ class Product(models.Model):
     overview = models.CharField(max_length=254, null=True, blank=True)
     has_variants = models.BooleanField(default=False, null=True, blank=True)
     variant_one = models.CharField(max_length=254, null=True, blank=True)
+    variant_one_stock_quantity = models.IntegerField(null=True, blank=True)
     variant_two = models.CharField(max_length=254, null=True, blank=True)
+    variant_two_stock_quantity = models.IntegerField(null=True, blank=True)
     variant_three = models.CharField(max_length=254, null=True, blank=True)
+    variant_three_stock_quantity = models.IntegerField(null=True, blank=True)
+    stock_quantity = models.IntegerField(null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     old_price = models.DecimalField(
         max_digits=6,
@@ -40,7 +44,6 @@ class Product(models.Model):
         null=True,
         blank=True
         )
-    stock_quantity = models.IntegerField()
     rating = models.DecimalField(
         max_digits=6,
         decimal_places=2,

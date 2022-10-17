@@ -15,6 +15,9 @@ This uses a modified model. In the product model, each product may have a produc
 ### Wishlist Items
 This uses a custom model.
 
+### Products Variants
+This uses a modified model.
+
 ### User Profile
 #### User Address
 #### User Order History
