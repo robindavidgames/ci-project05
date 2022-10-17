@@ -10,7 +10,7 @@ https://endless-explorer.herokuapp.com/
 ### Browse by Category
 
 ### Product Preview
-This uses a modified model.
+This uses a modified model. In the product model, each product may have a product preview. This text appears while browsing through products. It is limited to 254 characters.
 
 ### Wishlist Items
 This uses a custom model.

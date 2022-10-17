@@ -52,7 +52,7 @@
                             <a href="{% url 'product_view' product.id %}">
                                 <h5 class="card-title">{{ product.name }}</h5>
                             </a>
-                            <p class="card-text">{{ product.description }}</p>
+                            <p class="card-text">{{ product.overview }}</p>
                             {% if product.old_price %}
                                 <p class="card-text strike-through">Was: €{{ product.old_price }}</p>
                                 <p class="card-text">Now: €{{ product.price }}</p>

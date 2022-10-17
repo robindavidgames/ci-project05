@@ -28,6 +28,7 @@ class Product(models.Model):
     sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
     description = models.TextField()
+    overview = models.CharField(max_length=254, null=True, blank=True)
     has_variants = models.BooleanField(default=False, null=True, blank=True)
     variant_one = models.CharField(max_length=254, null=True, blank=True)
     variant_two = models.CharField(max_length=254, null=True, blank=True)

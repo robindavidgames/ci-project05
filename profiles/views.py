@@ -2,14 +2,13 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from .models import UserProfile
+from .models import UserProfile, Wishlist
 from .forms import UserProfileForm
 
 from checkout.models import Order
 
+
 # Modified from Boutique Ado sample project
-
-
 @login_required
 def profile(request):
     """ Display the user's profile. """
@@ -40,6 +39,7 @@ def profile(request):
     return render(request, template, context)
 
 
+# Modified from Boutique Ado sample project
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
@@ -48,10 +48,23 @@ def order_history(request, order_number):
         'A confirmation email was sent on the order date.'
     ))
 
-    template = 'checkout/checkout_success.html'
+    template = 'profiles/wishlist.html'
     context = {
         'order': order,
         'from_profile': True,
+    }
+
+    return render(request, template, context)
+
+
+# Custom view
+def display_wishlist(request):
+    """ Display the users wishlist """
+    user_wishlist = get_object_or_404(Wishlist, user=request.user)
+
+    template = 'checkout/checkout_success.html'
+    context = {
+        'user_wishlist': user_wishlist,
     }
 
     return render(request, template, context)
