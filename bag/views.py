@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.contrib import messages
 
 
 def view_bag(request):
@@ -37,6 +38,7 @@ def add_to_bag(request, item_id):
         else:
             bag[item_id] = quantity
 
+    messages.success(request, 'Product added to bag!')
     request.session['bag'] = bag
     return redirect(redirect_url)
 
@@ -61,6 +63,7 @@ def adjust_bag(request, item_id):
         else:
             bag.pop(item_id)
 
+    messages.success(request, 'Product quantity adjusted!')
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
 
@@ -81,6 +84,7 @@ def remove_from_bag(request, item_id):
         else:
             bag.pop(item_id)
 
+        messages.success(request, 'Product removed!')
         request.session['bag'] = bag
         return HttpResponse(status=200)
 

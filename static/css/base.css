@@ -58,3 +58,10 @@ input[type=number] {
 .order-history-bullet {
   margin-left: 20px;
 }
+
+.messages {
+  clear: both;
+  background: yellow;
+  color: blue;
+  text-align: center;
+}
