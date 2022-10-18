@@ -7,9 +7,9 @@ body {
   clear: both;
 } */
 
-/* .large-text {
+.large-text {
   font-size: large;
-} */
+}
 
 .xxlarge-text {
   font-size: xx-large;
@@ -22,29 +22,9 @@ body {
 
 .update-link, .remove-item {
   cursor: pointer;
-<<<<<<< HEAD
 }
 
-/* .message-container {
-  position: fixed;
-  top: 72px;
-  right: 15px;
-  z-index: 999999;
-} */
-
-/* .message-container { */
-  /* position: fixed; */
-  /* top: 72px;
-  right: 15px;
-  z-index: 9999; */
-/* } */
-
-.custom-toast {
-  overflow: visible;
-}
-
-.toast-capper {
-  height: 2px;
-=======
->>>>>>> parent of 9ffa1c1 (Begin implementing toasts, reset database.)
+.blue-bold {
+  color: blue;
+  font-weight: 700;
 }
