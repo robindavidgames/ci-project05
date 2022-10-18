@@ -89,9 +89,19 @@
 </nav>
 
 {% if messages %}
-    <div class="messages">
+    <!-- Modified from Django documentation: https://docs.djangoproject.com/en/4.1/ref/contrib/messages/ -->
+    <div class="messages" id="msg">
         {% for message in messages %}
             <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
         {% endfor %}
     </div>
+
+    <!-- JS to close messages after 3 seconds. Adapted from I Think Therefore I Blog -->
+    <script>
+        setTimeout(function () {
+            let messages = document.getElementById("msg");
+            let alert = new bootstrap.Alert(messages);
+            alert.close();
+        }, 3000);
+    </script>
 {% endif %}
