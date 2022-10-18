@@ -49,3 +49,12 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+#order-history {
+  padding-left: 50px;
+  width: 300px;
+}
+
+.order-history-bullet {
+  margin-left: 20px;
+}
