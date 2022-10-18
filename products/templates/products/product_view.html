@@ -1,10 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-<!-- {% block page_header %}
-{% endblock %} -->
-
-<!-- Modified from Boutique Ado project -->
+<!-- Significantly modified from Boutique Ado project -->
 {% block content %}
     <div class="container">
         <div class="row">
@@ -64,10 +61,7 @@
 
                         <!-- Select quantity of product. -->
                         {% include 'products/includes/quantity_selection_form.html' %}
-
-                        <div>
-                            <!-- <a href="{% url 'products' %}">Keep Shopping</a> -->
-                            <!-- <input type="submit" class="btn btn-outline-success my-2 my-sm-0 add-to-bag-button" value="Add to Bag"> -->
+                        <div class="text-right">
                             <input type="submit" class="add-to-bag-button btn-outline-success my-2 btn" value="Add to Bag">
                         </div>
                         <input type="hidden" name="redirect_url" value="{{ request.path }}">
