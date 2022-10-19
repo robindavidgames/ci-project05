@@ -281,6 +281,7 @@ Upon checking the documentation, to find out why these were not displaying corre
 ## Credits:
 - Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
 - Much of the project is modified from the Boutique Ado sample project.
+- Favicon modified from Freepic icon: https://www.flaticon.com/free-icons/adventure
 - Placeholder image: https://www.flaticon.com/free-icons/picture
 - Aluminium Teapot image: https://www.aliexpress.com/item/1005004112230217.html
 - Camping Thermal image: https://www.aliexpress.com/item/1005004215204462.html
