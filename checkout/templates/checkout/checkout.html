@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load bag_tools %}
 
 {% block content %}
 <div class="container">
@@ -39,7 +40,7 @@
                 <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
             </div>
             <div class="col text-right">
-                <p>Subtotal</p>
+                <p>Subtotal: {{ item.product.price | calc_subtotal:item.quantity }}</p>
             </div>
         </div>
         <hr>
