@@ -1,5 +1,7 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse
+from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
+
+# from products.models import Product
 
 
 def view_bag(request):
@@ -46,22 +48,31 @@ def add_to_bag(request, item_id):
 def adjust_bag(request, item_id):
     """ Adjust quantity of an item to the shopping bag. """
 
+    # product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     bag = request.session.get('bag', {})
+    variant = None
+    if 'variant' in request.POST:
+        variant = request.POST['variant']
 
     # Check if item has a variant
-    if 'variant' in request.POST:
-        variant = request.POST.get('variant')
-        if quantity > 0:
-            bag[item_id]['items_by_variant'][variant] = quantity
-        else:
-            del bag[item_id]['items_by_variant'][variant]
+    # if variant:
+    #     if quantity > 0:
+    #         bag[item_id]['items_by_variant'][variant] = quantity
+    #     else:
+    #         del bag[item_id]['items_by_variant'][variant]
+
+    # else:
+    #     if quantity > 0:
+    #         bag[item_id] = quantity
+    #     else:
+    #         bag.pop(item_id)
+
+    if variant:
+        bag[item_id]['items_by_variant'][variant] = quantity
 
     else:
-        if quantity > 0:
-            bag[item_id] = quantity
-        else:
-            bag.pop(item_id)
+        bag[item_id] = quantity
 
     messages.success(request, 'Product quantity adjusted!')
     request.session['bag'] = bag
