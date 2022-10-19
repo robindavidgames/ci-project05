@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, HttpResponse
 from django.contrib import messages
 
 # from products.models import Product
@@ -17,10 +17,12 @@ def add_to_bag(request, item_id):
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
     bag = request.session.get('bag', {})
+    variant = None
+    if 'variant' in request.POST:
+        variant = request.POST['variant']
 
     # Check if item has a variant
-    if 'variant' in request.POST:
-        variant = request.POST.get('variant')
+    if variant:
 
         # If it has a variant, check if there is already one of that style.
         # If not, add a new item. If so, add one to existing item.

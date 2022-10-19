@@ -44,6 +44,7 @@
                     {% endif %}
 
                     <!-- Show quantity, quantity controls, and item subtotal. -->
+                    <p>Style: {% if item.product.has_variants %}{{ item.variant|upper }}{% else %}N/A{% endif %}</p>
                     <p>Quantity: {{ item.quantity }}</p>
                     <form class="update-form" method="POST" action="{% url 'adjust_bag' item.item_id %}">
                         <!-- Form from Boutique Ado -->
