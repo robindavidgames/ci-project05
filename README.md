@@ -255,6 +255,29 @@ Luckily, this error was caught very early in the project. Changing the line to c
 ### Sorting Error
 When sorting by price, the products view does not consider that some products may be on sale. In order to fix this, I changed the product model so that "price" always represents the current price. Historical prices are then stored as "old_price", so that the original price can be referred to the on the site. If a product has an old_price, then it will be displayed as if it is on sale.
 
+### Live Database
+After deploying my site to Heroku, I made some more changes to models on my local version. After pushing these, I noticed that my deployed site had broken. Whenever I called a page which needed to use said models, it responded with a "ProgrammingError". I searched for answers for some time before contacting Tutor Support, where I learnt that I needed to additionally makemigrations and migrate within Heroky whenever I made changes to models. Running the following commands solved the issue:
+
+    heroku run python3 manage.py makemigrations
+
+    heroku run python3 manage.py migrate
+
+### Strange Columns
+On several pages, columns were displaying oddly, taking up half the page, rather than being full-width. Or not holding all of their contents. I was using the Bootstrap flex-grid to create them like this:
+
+<div class="container">
+    <div class="row">
+        <div class="column">
+            <p>Column 1</p>
+        </div>
+        <div class="column">
+            <p>Column 1</p>
+        </div>
+    </div>
+</div>
+
+Upon checking the documentation, to find out why these were not displaying correctly, I realised I was using the incorrect class for each column. I should have been using the class "col". This change corrected displays across the site.
+
 ## Credits:
 - Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
 - Much of the project is modified from the Boutique Ado sample project.

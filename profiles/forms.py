@@ -26,13 +26,27 @@ class UserProfileForm(forms.ModelForm):
 
         # Makes the cursor begin in the full_name field.
         self.fields['default_phone'].widget.attrs['autofocus'] = True
+
+        # Field labels
         for field in self.fields:
-            if field != 'default_country':
-                if self.fields[field].required:
-                    placeholder = f'{placeholders[field]} *'
-                else:
-                    placeholder = placeholders[field]
-                self.fields[field].widget.attrs['placeholder'] = placeholder
+            # if field != 'default_country':
+            #     if self.fields[field].required:
+            #         placeholder = f'{placeholders[field]} *'
+            #     else:
+            #         placeholder = placeholders[field]
+            #     self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'border-black rounded-0 profile-form-input'
-            self.fields[field].label = False
+            # self.fields[field].label = False
+            if field == "default_phone":
+                self.fields[field].label = "Phone Number"
+            if field == "default_street_address_1":
+                self.fields[field].label = "Street Address, Line 1"
+            if field == "default_street_address_2":
+                self.fields[field].label = "Street Address, Line 2"
+            if field == "default_town_city":
+                self.fields[field].label = "Town or City"
+            if field == "default_county":
+                self.fields[field].label = "County or State"
+            if field == "default_country":
+                self.fields[field].label = "Country"
             

@@ -4,21 +4,22 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="column">
+        <div class="col">
             <h2>Profile for {{ profile }}</h2>
             <hr>
         </div>
     </div>
     <div class="row">
-        <div class="column">
+        <div class="col">
             <h3>Address Details</h3>
+            <hr>
             <form action="{% url 'profile' %}" method="POST" id="profile-update-form">
                 {% csrf_token %}
                 {{ form|crispy }}
                 <button class="btn btn-outline-success my-2">Update Address</button>
             </form>
         </div>
-        <div class="column" id="order-history">
+        <div class="col" id="order-history">
             <h3>Order History</h3>
             <hr>
             {% for order in orders %}
