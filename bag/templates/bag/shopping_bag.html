@@ -21,12 +21,14 @@
             <div class="row">
                 <!-- Show product image, if available. Else show a placeholder. -->
                 <div class="col-3">
-                    {% if item.product.image %}
-                        <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.name }}">
-                    {% else %}
-                        <!-- <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ item.product.name }}"> -->
-                        <img src="../media/noimage.png" class="card-img-top" alt="{{ item.product.name }}">
-                    {% endif %}
+                    <a href="{% url 'product_view' item.product.id %}">
+                        {% if item.product.image %}
+                            <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.name }}">
+                        {% else %}
+                            <!-- <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ item.product.name }}"> -->
+                            <img src="../media/noimage.png" class="card-img-top" alt="{{ item.product.name }}">
+                        {% endif %}
+                    </a>
                 </div>
 
                 <!-- Show product details. -->

@@ -56,23 +56,23 @@ def adjust_bag(request, item_id):
         variant = request.POST['variant']
 
     # Check if item has a variant
-    # if variant:
-    #     if quantity > 0:
-    #         bag[item_id]['items_by_variant'][variant] = quantity
-    #     else:
-    #         del bag[item_id]['items_by_variant'][variant]
-
-    # else:
-    #     if quantity > 0:
-    #         bag[item_id] = quantity
-    #     else:
-    #         bag.pop(item_id)
-
     if variant:
-        bag[item_id]['items_by_variant'][variant] = quantity
+        if quantity > 0:
+            bag[item_id]['items_by_variant'][variant] = quantity
+        else:
+            del bag[item_id]['items_by_variant'][variant]
 
     else:
-        bag[item_id] = quantity
+        if quantity > 0:
+            bag[item_id] = quantity
+        else:
+            bag.pop(item_id)
+
+    # if variant:
+    #     bag[item_id]['items_by_variant'][variant] = quantity
+
+    # else:
+    #     bag[item_id] = quantity
 
     messages.success(request, 'Product quantity adjusted!')
     request.session['bag'] = bag
