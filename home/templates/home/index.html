@@ -12,35 +12,7 @@
                 <h2>Bestsellers</h2>
                 <div class="row row-cols-1 row-cols-md-4">
                     {% for product in best_selling %}
-                        <!-- Present a card for the product -->
-                        <div class="col mb-4">
-                            <div class="card h-100">
-                                <!-- Show product image, if available. Else show a placeholder. -->
-                                <a href="{% url 'product_view' product.id %}">
-                                    {% if product.image %}
-                                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                                    {% else %}
-                                        <!-- <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ product.name }}"> -->
-                                        <img src="../media/noimage.png" class="card-img-top" alt="{{ product.name }}">
-                                    {% endif %}
-                                </a>
-
-                                <!-- Show product details. Then if it is on sale, show the sale price. Else, normal price. -->
-                                <div class="card-body">
-                                    <a href="{% url 'product_view' product.id %}">
-                                        <h5 class="card-title">{{ product.name }}</h5>
-                                    </a>
-                                    <p class="card-text">{{ product.overview }}</p>
-                                    {% if product.old_price %}
-                                        <p class="card-text strike-through">Was: €{{ product.old_price }}</p>
-                                        <p class="card-text">Now: €{{ product.price }}</p>
-                                    {% else %}
-                                        <p class="card-text">€{{ product.price }}</p>
-                                    {% endif %}
-                                </div>
-
-                            </div>
-                        </div>
+                        {% include './includes/gallery_display.html' %}
                     {% endfor %}
                 </div>
 
@@ -49,36 +21,7 @@
                 <h2>Cooking</h2>
                 <div class="row row-cols-1 row-cols-md-4">
                     {% for product in cooking %}
-                        <!-- Present a card for the product -->
-                        <div class="col mb-4">
-                            <div class="card h-100">
-
-                                <!-- Show product image, if available. Else show a placeholder. -->
-                                <a href="{% url 'product_view' product.id %}">
-                                    {% if product.image %}
-                                        <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                                    {% else %}
-                                        <!-- <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ product.name }}"> -->
-                                        <img src="../media/noimage.png" class="card-img-top" alt="{{ product.name }}">
-                                    {% endif %}
-                                </a>
-
-                                <!-- Show product details. Then if it is on sale, show the sale price. Else, normal price. -->
-                                <div class="card-body">
-                                    <a href="{% url 'product_view' product.id %}">
-                                        <h5 class="card-title">{{ product.name }}</h5>
-                                    </a>
-                                    <p class="card-text">{{ product.overview }}</p>
-                                    {% if product.old_price %}
-                                        <p class="card-text strike-through">Was: €{{ product.old_price }}</p>
-                                        <p class="card-text">Now: €{{ product.price }}</p>
-                                    {% else %}
-                                        <p class="card-text">€{{ product.price }}</p>
-                                    {% endif %}
-                                </div>
-
-                            </div>
-                        </div>
+                        {% include './includes/gallery_display.html' %}
                     {% endfor %}
                 </div>
 

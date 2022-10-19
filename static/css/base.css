@@ -3,10 +3,6 @@ body {
   padding-top: 4.5rem;
 }
 
-/* .clear {
-  clear: both;
-} */
-
 .large-text {
   font-size: large;
 }
@@ -65,3 +61,7 @@ input[type=number] {
   color: black;
   text-align: center;
 }
+
+/* .front-page-category {
+  padding-bottom: 10px;
+} */

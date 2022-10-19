@@ -6,8 +6,8 @@
             {% if product.image %}
                 <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
             {% else %}
-                <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ product.name }}">
-                <!-- <img src="../media/noimage.png" class="card-img-top" alt="{{ product.name }}"> -->
+                <!-- <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ product.name }}"> -->
+                <img src="../media/noimage.png" class="card-img-top" alt="{{ product.name }}">
             {% endif %}
         </a>
 
