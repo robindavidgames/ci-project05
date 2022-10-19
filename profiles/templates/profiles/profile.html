@@ -27,11 +27,7 @@
                     <a href="{% url 'order_history' order.order_number %}" title="{{ order.order_number }}">
                     {{ order.order_number|truncatechars:20 }}
                     </a>
-                <!-- </div>
-                <div> -->
                     <p>{{ order.date }}</p>
-                <!-- </div>
-                <div> -->
                     {% for item in order.lineitems.all %}
                         <li class="order-history-bullet">
                             <!-- {% if item.product.has_sizes %} -->
