@@ -55,27 +55,27 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save()
-            
+
             for item_id, item_data in bag.items():
                 try:
                     product = Product.objects.get(id=item_id)
 
-                    order_line_item = OrderLineItem(
-                        order=order,
-                        product=product,
-                        # quantity=item_data,
+                    # order_line_item = OrderLineItem(
+                    #     order=order,
+                    #     product=product,
+                    #     quantity=item_data,
                         # quantity=order_quantity,
-                    )
-                    order_line_item.save()
+                    # )
+                    # order_line_item.save()
 
                     # If integer, then doesn't have variants.
-                    # if isinstance(item_data, int):
-                    #     order_line_item = OrderLineItem(
-                    #         order=order,
-                    #         product=product,
-                    #         quantity=item_data,
-                    #     )
-                    #     order_line_item.save()
+                    if isinstance(item_data, int):
+                        order_line_item = OrderLineItem(
+                            order=order,
+                            product=product,
+                            order_quantity=item_data,
+                        )
+                        order_line_item.save()
                     # else:
                     #     for size, quantity in item_data['items_by_size'].items():
                     #         order_line_item = OrderLineItem(
