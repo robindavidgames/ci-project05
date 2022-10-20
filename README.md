@@ -1,7 +1,18 @@
 # Project 5: Endless Explorer
 Endless Explorer is an ecommerce website selling camping/survivalist gear. Users can browse a catalogue of products and make purchases. Users can make accounts, within which they can see their order history and other details.
 
-https://endless-explorer.herokuapp.com/
+This project is built with Django, CSS, HTML, Python, and Javascript. It uses a custom models and models adapted from the Boutique Ado examples. It has C.R.U.D. functionality, allowing users to create, read, update, and delete products. The majority of styling is done through Bootstrap, though there is a custom CSS for for more specific styling.
+
+There are two types of users:
+
+- A superuser that can create, delete, and edit products.
+- A standard user that can browse the site and create orders.
+
+(Click here to visit the Endless Explorer website.)[https://endless-explorer.herokuapp.com/]
+
+# RESPONSIVE DESIGN IMAGE
+
+## Table of Contents
 
 ## Features
 
@@ -11,6 +22,9 @@ The front page has relevant descriptive text, to effectivly use SEO. It then has
 ### Navigation Bar
 The navigation bar allows users to browse products by category, search, login, logout, access their profile, and view the shopping cart. If they are a superuser, it also lets them open the "Add an Item" form. It sticks to the top of the top of the window when the user scrolls down the page.
 
+### Messages
+Messages are displayed below the navigation bar. Messages appear when the user makes any changes to their bag, logs in, logs out, completes the checkout, etc. The message div is dismissed after 3 seconds, using a small piece of JS code.
+
 ### Footer
 The footer contains links to social media and other important information. Links have the rel="noopener" attribute.
 
@@ -18,15 +32,74 @@ The footer contains links to social media and other important information. Links
 Users are able to browse products by category, using links on the main page or on the navbar. This shows a subset of products. Users can also search for products by name.
 
 ### Product Cards
-When browsing, products are displayed on cards. These cards contain the product image (if there is one - there is also a default "noimage" image), a brief product description, rating, category, price.
+When browsing, products are displayed on cards. These cards contain the product image (if there is one - there is also a default "noimage" image), a brief product description, rating, category, price. They also contain a quick buy button, which will immediately add one copy of the product to the user cart. If the product has variants, which must be selected, the user will instead go to the product page when clicking this button.
 
 ### Products Variants
-This uses a modified model.
+This uses a modified model. Each product can have up to 3 variants - ie, colours, sizes, etc. These are selected from a drop-down box on the product details page. The user can add multiple variants of the same product, which will be added as seperate line items, or multiple copies of the same variant, which will be the same line item.
 
 ### User Profile
+The user profile displays information about the logged in user.
+
 #### User Address
+The user can update their default address on their profile page. This will be reflected on the order form when they checkout.
+
 #### User Order History
-#### User Wishlist
+The user can see their order history and can click into each order for more details, similar to the order confirmation page.
+
+### Bag
+The user can see items in their bag, can adjust the quantities of said items, and delete items from their bag. Adjusting items is handled through some JS code.
+
+### Checkout
+In the checkout, the user gets a summary of their order and then must fill in an address form and card details. They can then confirm their order or return to the store.
+
+### Order confirmation
+Upon completing payment with Stripe, the user is brought to an order confirmation page, where order details are presented.
+
+### AllAuth Pages
+User login/logout are handled though AllAuth. These pages have had CSS styling applied to them.
+
+### CRUD functionality
+The Superuser has full CRUD functionality in respect to products in the store. They can add a new product by following a link in the navbar - this provides the same form as could be found in the admin panel. They can also edit and delete products, by clicking the links on the product page or the product card when browsing.
+
+## Design
+I have used a simple colour scheme, forcussing on greys and greens. This is to create a clean site. The green in the buttons is to echo the idea of nature and adventure.
+
+I used Bootstrap for most of this project, using guidance from Bootstrap's Getting Started Documentation.
+
+In addition, I used my own custom CSS file, to create smaller and more specific styling effects. On occasion, I have applied styling to exising Bootstrap classes.
+
+# UX design
+
+## Search Engine Optimisation
+
+## Agile Development / User Stories
+
+## Accessibility
+The entire site is text based, so should work well with screen readers. The exception to this is the external links in the footer, which are given an aria-label, and recipe images, which are given an alt text.
+
+The website uses high-contrast colours between background and text to maintain readability.
+
+## Testing
+
+### Manual Testing
+
+### Validator Testing
+
+HTML validator
+
+The site passes HTML Validation at https://validator.w3.org/nu/.
+
+CSS validator
+
+The site passes CSS Validation at https://jigsaw.w3.org/css-validator/.
+
+Lighthouse
+
+The site scores very well on Lighthouse for desktop.
+
+Pep8
+
+The Python code passes Pep8 validation.
 
 ## Project Setup
 ### Basics
@@ -83,8 +156,8 @@ This uses a modified model.
 - from .models import Product
 - admin.site.register(Product)
 
-### Deployment
-#### Deploying to Heroku
+## Project Deployment
+### Deploying to Heroku
 - Create new app, give it a name, and choose closest region.
 - On Resources tab, create a Heroku Postgres add-on.
 - pip3 install dj_database_url
@@ -121,15 +194,15 @@ DATABASES = {
 (if facing an error, downgrade Heroku version with: heroku stack:set heroku-20 -a endless-explorer
 then create a runtime.txt file containing: python-3.8.14)
 
-#### Github
+### Github
 - Connect app to github through the deploy tab on Heroku. 
 - Now enable automatic deploys so that github deploys also deploy to Heroku.
 
-#### Create a new Secret Key
+### Create a new Secret Key
 - In settings/config vars, create SECRET_KEY
 - In settings.py replace the existing secret key with: SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
-#### Arrange Amazon S3 to host static files
+### Arrange Amazon S3 to host static files
 - Sign up for Amazon Web Services
 - Create an S3 bucket
 - Ensure bucket is public and ACLs enabled.
@@ -178,7 +251,7 @@ then create a runtime.txt file containing: python-3.8.14)
 - Add the user to the correct group and click through 'Tags', 'Review', and 'Create User'.
 - Download the CSV file, which contains the User's access keys.
 
-#### Configure Django to Access Amazon Services
+### Configure Django to Access Amazon Services
 
 - Install boto3 and django-storages:
 
@@ -211,14 +284,14 @@ then create a runtime.txt file containing: python-3.8.14)
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
-#### Configure Stripe
+### Configure Stripe
 
 - Copy the Stripe API keys into the Heroku config vars.
 - Create a new Endpoint for the Stripe webhook, pointing to https://endless-explorer.herokuapp.com/checkout/wh/
 - Set the webhook to receive all events.
 - Reveal the webhook's signing secret and add this to the Heroku config vars.
 
-### Setting up Emails
+## Setting up Emails
 
 - Go to gmail settings, and seach for App Passwords.
 - Select "mail" and for the app, select "other" and type in a name for the app.
@@ -241,7 +314,7 @@ then create a runtime.txt file containing: python-3.8.14)
         EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
         DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
-### Invoke Linter
+## Invoke Linter
 
 To check for issues across the entire project:
 
@@ -282,6 +355,26 @@ On several pages, columns were displaying oddly, taking up half the page, rather
 </div>
 
 Upon checking the documentation, to find out why these were not displaying correctly, I realised I was using the incorrect class for each column. I should have been using the class "col". This change corrected displays across the site.
+
+## Technologies Used
+
+- Javascript
+- Python
+- CSS
+- HTML
+- Django
+- AllAuth
+- Heroku
+- Cloudinary
+- GitHub
+- GitPod
+- GitHub Pages
+- Firefox developer tools
+- Chrome developer tools
+- JSHint
+- W3 HTML Validator
+- W3 CSS Validator
+- favicon.io
 
 ## Credits:
 - Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
