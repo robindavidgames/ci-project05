@@ -98,6 +98,10 @@ My site includes a robots.txt file.
 
 ![Screenshot of Facebook Business Page](/assets/readme_images/EEFacebookMockup.jpg)
 
+## Mailchimp Integration
+
+The site includes a link for mailing list signup through mailchimp.
+
 ## Agile Development / User Stories
 The site was developed using Agile Methodology (ie, MoSCoW prioritisation) to ensure that important elements were finished first and that they were approached in bite-size chunks.
 
