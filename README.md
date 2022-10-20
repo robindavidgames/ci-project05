@@ -8,6 +8,11 @@ https://endless-explorer.herokuapp.com/
 ### Front Page
 The front page has relevant descriptive text, to effectivly use SEO. It then has products grouped by category for the user to browse through. Users can click on a category for more items, or click into an individual item for more details.
 
+### Navigation Bar
+The navigation bar allows users to browse products by category, login, logout, access their profile, and view the shopping cart. If they are a superuser, it also lets them open the "Add an Item" form.
+
+### Footer
+
 ### Browse by Category
 
 ### Product Preview
