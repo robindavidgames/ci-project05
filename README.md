@@ -146,19 +146,24 @@ The website uses high-contrast colours between background and text to maintain r
 
 ### Validator Testing
 
-HTML validator
+#### HTML validator
 
 HTML Validation at https://validator.w3.org/nu/ produces some errors on the index regarding duplicate ids. I know why this is occuring and that it isn't a problem - these ids refer to quantity selector forms that are hidden from the user and cannot be adjusted by them. Subsequently, the duplicate id has no ill effect. Other than that, the site passes HTML validation. 
 
-CSS validator
+#### CSS validator
 
 The site passes CSS Validation at https://jigsaw.w3.org/css-validator/.
 
-Lighthouse
+![Screenshot of CSS Validator](/assets/readme_images/CSSvalidator.png)
 
-The site scores very well on Lighthouse for desktop.
+#### Lighthouse
 
-Pep8
+The site scores very well on Lighthouse for desktop and mobile. The slightly lower score on mobile devices is because the site used PNG images.
+
+![Screenshot of Lighthouse Desktop](/assets/readme_images/lighthousedesktop.png)
+![Screenshot of Lighthouse Mobile](/assets/readme_images/lighthousemobile.png)
+
+#### Pep8
 
 The Python code passes Pep8 validation.
 
@@ -174,7 +179,7 @@ The Python code passes Pep8 validation.
 - Create superuser: "python3 manage.py createsuperuser"
 
 ### AllAuth
-- install with: "pip3 install django-allauth==0.41.0"
+- Install with: "pip3 install django-allauth==0.41.0"
 - Add authentication backends and installed apps details, from AllAuth documentation (https://django-allauth.readthedocs.io/en/latest/installation.html)
 - Create URLs in urls.py: path('accounts', include('allauth.urls')),
 - Run migrations
@@ -379,7 +384,7 @@ then create a runtime.txt file containing: python-3.8.14)
 
 To check for issues across the entire project:
 
-python3 -m flake8
+    python3 -m flake8
 
 ## Bugs
 ### Views Error
