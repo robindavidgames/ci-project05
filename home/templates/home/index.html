@@ -9,9 +9,18 @@
         <div class="row">
             <div class="col">
 
-                <h2>Bestsellers</h2>
+                <h2>Sale Items</h2>
                 <div class="row row-cols-1 row-cols-md-4">
-                    {% for product in best_selling %}
+                    {% for product in sale_items %}
+                        {% include './includes/gallery_display.html' %}
+                    {% endfor %}
+                </div>
+
+                <hr>
+
+                <h2><a class="index-cat-link" href="{% url 'products' %}?category=camping">Camping</a></h2>
+                <div class="row row-cols-1 row-cols-md-4">
+                    {% for product in camping %}
                         {% include './includes/gallery_display.html' %}
                     {% endfor %}
                 </div>
@@ -26,6 +35,53 @@
                 </div>
 
                 <hr>
+
+                <h2><a class="index-cat-link" href="{% url 'products' %}?category=lighting">Lighting</a></h2>
+                <div class="row row-cols-1 row-cols-md-4">
+                    {% for product in lighting %}
+                        {% include './includes/gallery_display.html' %}
+                    {% endfor %}
+                </div>
+
+                <hr>
+
+                <h2><a class="index-cat-link" href="{% url 'products' %}?category=navigation">Navigation</a></h2>
+                <div class="row row-cols-1 row-cols-md-4">
+                    {% for product in navigation %}
+                        {% include './includes/gallery_display.html' %}
+                    {% endfor %}
+                </div>
+
+                <hr>
+
+                <h2><a class="index-cat-link" href="{% url 'products' %}?category=gadgets">Gadgets</a></h2>
+                <div class="row row-cols-1 row-cols-md-4">
+                    {% for product in gadgets %}
+                        {% include './includes/gallery_display.html' %}
+                    {% endfor %}
+                </div>
+
+                <hr>
+
+                <h2><a class="index-cat-link" href="{% url 'products' %}?category=hiking">Hiking</a></h2>
+                <div class="row row-cols-1 row-cols-md-4">
+                    {% for product in hiking %}
+                        {% include './includes/gallery_display.html' %}
+                    {% endfor %}
+                </div>
+
+                <hr>
+
+                <h2><a class="index-cat-link" href="{% url 'products' %}?category=food_and_drink">Food and Drink</a></h2>
+                <div class="row row-cols-1 row-cols-md-4">
+                    {% for product in food_and_drink %}
+                        {% include './includes/gallery_display.html' %}
+                    {% endfor %}
+                </div>
+
+                <hr>
+
+                
             </div>
         </div>
     </div>
