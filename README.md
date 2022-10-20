@@ -71,11 +71,22 @@ In addition, I used my own custom CSS file, to create smaller and more specific 
 # UX design
 
 ## Search Engine Optimisation
+In order to populate the text on the site, I rearched google searches related to outdoor aventure, camping, hiking, etc. After compiling a list of recurring terms, I ensured that product text and page introductions used such terms.
+
+Websites such as www.wordtracker.com were invaluable for this and helped specifically with choosing product names.
+
+Using semantic fields such as nav, header, footer, and headers further assists with effective SEO.
+
+On product pages, image alt fields always include product names.
+
+Keyword meta tags have been included in the header of every page, ulilising terms found in my research.
+
+
 
 ## Agile Development / User Stories
 
 ## Accessibility
-The entire site is text based, so should work well with screen readers. The exception to this is the external links in the footer, which are given an aria-label, and recipe images, which are given an alt text.
+The entire site is text based, so should work well with screen readers. The exception to this is the external links in the footer, which are given an aria-label, and recipe images, which are given an alt text. Product images all have alt texts, which display the product name.
 
 The website uses high-contrast colours between background and text to maintain readability.
 
