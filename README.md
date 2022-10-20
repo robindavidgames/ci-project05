@@ -81,6 +81,12 @@ On product pages, image alt fields always include product names.
 
 Keyword meta tags have been included in the header of every page, ulilising terms found in my research.
 
+My site includes an XML sitemap, created on https://www.xml-sitemaps.com/
+
+# UPDATE THIS WHEN SITE IS FINISHED!
+
+My site includes a robots.txt file.
+
 
 
 ## Agile Development / User Stories
@@ -386,6 +392,8 @@ Upon checking the documentation, to find out why these were not displaying corre
 - W3 HTML Validator
 - W3 CSS Validator
 - favicon.io
+- Wordtracker
+- XML-Sitemaps
 
 ## Credits:
 - Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
