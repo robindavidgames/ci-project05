@@ -148,7 +148,7 @@ The website uses high-contrast colours between background and text to maintain r
 
 HTML validator
 
-The site passes HTML Validation at https://validator.w3.org/nu/.
+HTML Validation at https://validator.w3.org/nu/ produces some errors on the index regarding duplicate ids. I know why this is occuring and that it isn't a problem - these ids refer to quantity selector forms that are hidden from the user and cannot be adjusted by them. Subsequently, the duplicate id has no ill effect. Other than that, the site passes HTML validation. 
 
 CSS validator
 
