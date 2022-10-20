@@ -14,7 +14,7 @@ def index(request):
     gadgets = Product.objects.all().filter(category__name='gadgets')[:4]
     hiking = Product.objects.all().filter(category__name='hiking')[:4]
     food_and_drink = Product.objects.all().filter(
-        category__name='food_and_drink')[:4]
+        category__name='food-and-drink')[:4]
     context = {
         'sale_items': sale_items,
         'camping': camping,

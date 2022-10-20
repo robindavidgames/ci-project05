@@ -73,7 +73,9 @@ def checkout(request):
                         order_line_item.save()
 
                     else:
-                        for variant, quantity in item_data['items_by_variant'].items():
+                        for variant, quantity in item_data[
+                            'items_by_variant'
+                            ].items():
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
@@ -90,9 +92,13 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('view_bag'))
 
-            # If the user wants to save their info, redirect them to a new page.
+            # If the user wants to save their info, 
+            # redirect them to a new page.
             request.session['save_info'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse(
+                'checkout_success',
+                args=[order.order_number]
+                ))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
@@ -101,7 +107,9 @@ def checkout(request):
         bag = request.session.get('bag', {})
         # To prevent a user typing the checkout URL.
         if not bag:
-            messages.error(request, "There's nothing in your bag at the moment")
+            messages.error(
+                request,
+                "There's nothing in your bag at the moment")
             return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
