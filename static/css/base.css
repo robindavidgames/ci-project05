@@ -81,3 +81,9 @@ input[type=number] {
   /* justify-content: center; */
   align-items: center;
 }
+
+#opening-para {
+  width: 80%;
+  margin: auto;
+  font-size: large;
+}
