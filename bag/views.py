@@ -70,12 +70,6 @@ def adjust_bag(request, item_id):
         else:
             bag.pop(item_id)
 
-    # if variant:
-    #     bag[item_id]['items_by_variant'][variant] = quantity
-
-    # else:
-    #     bag[item_id] = quantity
-
     messages.success(request, 'Product quantity adjusted!')
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))

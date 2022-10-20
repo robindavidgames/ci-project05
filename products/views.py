@@ -7,7 +7,7 @@ from django.db.models.functions import Lower
 from .models import Product, Category
 from .forms import ProductForm
 
-# Create your views here.
+
 # Modified from Boutique Ado project.
 def all_products(request):
     """ A view to show all products. """
@@ -17,7 +17,6 @@ def all_products(request):
     categories = None
     sort = None
     direction = None
-
 
     if request.GET:
         if 'sort' in request.GET:
@@ -40,14 +39,17 @@ def all_products(request):
         if 'q' in request.GET:
             query = request.GET['q']
             if not query:
-                messages.error(request, "You didn't enter any search criteria!")
+                messages.error(
+                    request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
 
             # Using Q to allow search in title OR description.
             # i before 'contains' makes the seach case insensitive
-            queries = Q(name__icontains=query) | Q(description__icontains=query)
+            queries = (
+                Q(name__icontains=query) | Q(description__icontains=query)
+                )
             products = products.filter(queries)
-    
+
     current_sorting = f'{sort}_{direction}'
 
     context = {
@@ -86,7 +88,8 @@ def add_product(request):
             messages.success(request, 'Successfully added product!')
             return redirect(reverse('product_view', args=[product.id]))
         else:
-            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add product. \
+                Please ensure the form is valid.')
     else:
         form = ProductForm()
 
@@ -115,7 +118,8 @@ def edit_product(request, product_id):
             messages.success(request, 'Successfully updated product!')
             return redirect(reverse('product_view', args=[product.id]))
         else:
-            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+            messages.error(request, 'Failed to update product. \
+                Please ensure the form is valid.')
     else:
         form = ProductForm(instance=product)
         messages.info(request, f'You are editing {product.name}')
