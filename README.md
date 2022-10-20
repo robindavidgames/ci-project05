@@ -414,3 +414,14 @@ Upon checking the documentation, to find out why these were not displaying corre
 - Water Purifier image: https://www.aliexpress.com/item/1005004112186122.html
 - Carbiner image: https://www.aliexpress.com/item/1005004404157227.html
 - Hunting Bag image: https://www.aliexpress.com/item/1005003050642045.html
+- Camping Pillow image: https://www.aliexpress.com/item/1005004327692333.html
+- Gas torch image: https://www.aliexpress.com/item/1005004710565250.html
+- Parachute cord image: https://www.aliexpress.com/item/1005002239649577.html
+- Camping stove image: https://www.aliexpress.com/item/1005004560109672.html
+- Police brand torch image: https://www.aliexpress.com/item/1005003287493435.html
+- Mini Lantern image: https://www.aliexpress.com/item/1005004593272493.html
+- Portable torch image: https://www.aliexpress.com/item/1005004338584594.html
+- Camping Lantern image: https://www.aliexpress.com/item/1005004607730450.html
+- Compass image: https://www.aliexpress.com/item/4000017445414.html
+- Walking stick image: https://www.aliexpress.com/item/1005004222181062.html
+- Strawberries image: https://www.nutsinbulk.ie/product/freeze-strawberries-pieces
