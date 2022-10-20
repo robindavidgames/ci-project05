@@ -1,11 +1,12 @@
 # Project 5: Endless Explorer
-Endless Explorer is an ecommerce website selling camping gear. Users can browse a catalogue of products and make purchases. Users can also view a blog and leave comments/reviews on posts/products. Users can make accounts, within which they can see their order history and other details.
+Endless Explorer is an ecommerce website selling camping/survivalist gear. Users can browse a catalogue of products and make purchases. Users can make accounts, within which they can see their order history and other details.
 
 https://endless-explorer.herokuapp.com/
 
 ## Features
 
 ### Front Page
+The front page has relevant descriptive text, to effectivly use SEO. It then has products grouped by category for the user to browse through. Users can click on a category for more items, or click into an individual item for more details.
 
 ### Browse by Category
 

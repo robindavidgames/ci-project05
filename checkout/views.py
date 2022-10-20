@@ -1,4 +1,7 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import (
+    render, redirect, reverse,
+    get_object_or_404, HttpResponse
+    )
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -60,14 +63,6 @@ def checkout(request):
                 try:
                     product = Product.objects.get(id=item_id)
 
-                    # order_line_item = OrderLineItem(
-                    #     order=order,
-                    #     product=product,
-                    #     quantity=item_data,
-                        # quantity=order_quantity,
-                    # )
-                    # order_line_item.save()
-
                     # If integer, then doesn't have variants.
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
@@ -76,15 +71,6 @@ def checkout(request):
                             order_quantity=item_data,
                         )
                         order_line_item.save()
-                    # else:
-                    #     for size, quantity in item_data['items_by_size'].items():
-                    #         order_line_item = OrderLineItem(
-                    #             order=order,
-                    #             product=product,
-                    #             quantity=quantity,
-                    #             product_size=size,
-                    #         )
-                    #         order_line_item.save()
 
                     else:
                         for variant, quantity in item_data['items_by_variant'].items():
@@ -98,7 +84,7 @@ def checkout(request):
 
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your bag wasn't found in our database. "
+                        "One of the products in your bag wasn't found. "
                         "Please call us for assistance!")
                     )
                     order.delete()
@@ -149,7 +135,7 @@ def checkout(request):
 
     if not stripe_public_key:
         messages.warning(request, 'Stripe public key is missing.')
-    
+
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
