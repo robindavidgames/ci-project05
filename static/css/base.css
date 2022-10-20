@@ -71,3 +71,13 @@ input[type=number] {
   color: #457B9D;
   margin-left: 20px;
 }
+
+.hide {
+  display: none;
+}
+
+.vertical-center {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}

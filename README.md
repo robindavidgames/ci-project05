@@ -6,20 +6,19 @@ https://endless-explorer.herokuapp.com/
 ## Features
 
 ### Front Page
-The front page has relevant descriptive text, to effectivly use SEO. It then has products grouped by category for the user to browse through. Users can click on a category for more items, or click into an individual item for more details.
+The front page has relevant descriptive text, to effectivly use SEO. It then has 4 products from each category for the user to browse through. Users can click on a category for more items, or click into an individual item for more details.
 
 ### Navigation Bar
-The navigation bar allows users to browse products by category, login, logout, access their profile, and view the shopping cart. If they are a superuser, it also lets them open the "Add an Item" form.
+The navigation bar allows users to browse products by category, search, login, logout, access their profile, and view the shopping cart. If they are a superuser, it also lets them open the "Add an Item" form. It sticks to the top of the top of the window when the user scrolls down the page.
 
 ### Footer
+The footer contains links to social media and other important information. Links have the rel="noopener" attribute.
 
-### Browse by Category
+### Browse by Category and Seach
+Users are able to browse products by category, using links on the main page or on the navbar. This shows a subset of products. Users can also search for products by name.
 
-### Product Preview
-This uses a modified model. In the product model, each product may have a product preview. This text appears while browsing through products. It is limited to 254 characters.
-
-### Wishlist Items
-This uses a custom model.
+### Product Cards
+When browsing, products are displayed on cards. These cards contain the product image (if there is one - there is also a default "noimage" image), a brief product description, rating, category, price.
 
 ### Products Variants
 This uses a modified model.
