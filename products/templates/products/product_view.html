@@ -94,8 +94,13 @@
 
         </div>
 
-        <div>
-            <a class="" href="{% url 'products' %}?sort=rating&direction=desc">Continue Shopping</a>
+        <div class="text-right">
+            <a href="{% url 'products' %}?sort=rating&direction=desc" class="btn-outline-success my-2 btn">
+                <span class="icon">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                <span class="font-weight-bold">View more items</span>
+            </a>
         </div>
 
     </div>

@@ -70,6 +70,9 @@ In addition, I used my own custom CSS file, to create smaller and more specific 
 
 # UX design
 
+### Responsive Design
+Thanks to the boostrap CSS, the site is fully responsive. On a mobile device, the navigation menu turns into a button, product cards automatically reduce in size and evenutally stack.
+
 ## Search Engine Optimisation
 In order to populate the text on the site, I rearched google searches related to outdoor aventure, camping, hiking, etc. After compiling a list of recurring terms, I ensured that product text and page introductions used such terms. However, I tried to maintain a level of expertese, authoratativeness, and trustworthiness in order to satisfy Rater Guidelines.
 
@@ -88,8 +91,6 @@ My site includes an XML sitemap, created on https://www.xml-sitemaps.com/
 My site includes a robots.txt file.
 
 ## Facebook Business Page
-
-
 
 ## Agile Development / User Stories
 
