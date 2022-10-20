@@ -66,3 +66,8 @@ input[type=number] {
   text-decoration: none;
   color: black;
 }
+
+.social-link {
+  color: #457B9D;
+  margin-left: 20px;
+}
