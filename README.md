@@ -94,9 +94,9 @@ My site includes an XML sitemap, created on https://www.xml-sitemaps.com/
 
 My site includes a robots.txt file.
 
-## Facebook Business Page
+## Facebook Business Page Mockup
 
-# ADD
+![Screenshot of Facebook Business Page](/assets/readme_images/EEFacebookMockup.jpg)
 
 ## Agile Development / User Stories
 The site was developed using Agile Methodology (ie, MoSCoW prioritisation) to ensure that important elements were finished first and that they were approached in bite-size chunks.
