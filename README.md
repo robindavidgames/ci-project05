@@ -78,7 +78,10 @@ In order to populate the text on the site, I rearched google searches related to
 
 Websites such as www.wordtracker.com were invaluable for this and helped specifically with choosing product names.
 
-Using semantic fields such as nav, header, footer, and headers further assists with effective SEO.
+![Screenshot of Wordtracker](/assets/readme_images/wordtracker1.png)
+![Screenshot of Wordtracker](/assets/readme_images/wordtracker2.png)
+
+Using semantic elements such as nav, header, footer, and headers further assists with effective SEO.
 
 On product pages, image alt fields always include product names.
 
