@@ -61,6 +61,9 @@ User login/logout are handled though AllAuth. These pages have had CSS styling a
 ### CRUD functionality
 The Superuser has full CRUD functionality in respect to products in the store. They can add a new product by following a link in the navbar - this provides the same form as could be found in the admin panel. They can also edit and delete products, by clicking the links on the product page or the product card when browsing.
 
+### Custom 404
+There is a custom 404 page.
+
 ## Design
 I have used a simple colour scheme, forcussing on greys and greens. This is to create a clean site. The green in the buttons is to echo the idea of nature and adventure.
 
