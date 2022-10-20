@@ -8,7 +8,7 @@ There are two types of users:
 - A superuser that can create, delete, and edit products.
 - A standard user that can browse the site and create orders.
 
-(Click here to visit the Endless Explorer website.)[https://endless-explorer.herokuapp.com/]
+**[Click here to visit the Endless Explorer website.](https://endless-explorer.herokuapp.com/)**
 
 # RESPONSIVE DESIGN IMAGE
 
@@ -38,7 +38,7 @@ When browsing, products are displayed on cards. These cards contain the product 
 This uses a modified model. Each product can have up to 3 variants - ie, colours, sizes, etc. These are selected from a drop-down box on the product details page. The user can add multiple variants of the same product, which will be added as seperate line items, or multiple copies of the same variant, which will be the same line item.
 
 ### User Profile
-The user profile displays information about the logged in user.
+The user profile displays information about the logged in user - primarily their address and order history.
 
 #### User Address
 The user can update their default address on their profile page. This will be reflected on the order form when they checkout.
@@ -89,22 +89,60 @@ Keyword meta tags have been included in the header of every page, ulilising term
 
 My site includes an XML sitemap, created on https://www.xml-sitemaps.com/
 
-# UPDATE THIS WHEN SITE IS FINISHED!
-
 My site includes a robots.txt file.
 
 ## Facebook Business Page
 
+# ADD
+
 ## Agile Development / User Stories
+The site was developed using Agile Methodology (ie, MoSCoW prioritisation) to ensure that important elements were finished first and that they were approached in bite-size chunks.
+
+# ADD
 
 ## Accessibility
-The entire site is text based, so should work well with screen readers. The exception to this is the external links in the footer, which are given an aria-label, and recipe images, which are given an alt text. Product images all have alt texts, which display the product name.
+The site is largely text based, so works well with screen readers. The exception to this is the external links in the footer, which are given an aria-label, and product images, which are given an alt text.
 
 The website uses high-contrast colours between background and text to maintain readability.
 
 ## Testing
 
 ### Manual Testing
+
+| Function | Expected Outcome | Actual Outcome
+| --- | --- | --- |
+| **Any User** |  |  |
+| User can open main page. | Display navbar, gallery of products, and footer. | As intended. |
+| User can click through product cards. | Clicking through product cards shows product details. | As intended. |
+| User can follow external links in footer. | External links direct to social media. | As intended. |
+| User can register new account. | Clicking Register in header allows user to fill in form for a new account. | As intended. |
+| Registration form is validated. | User must submit a username and a valid password. Email is optional. | As intended. |
+| User recieves confirmation emails | Upon registering, confirmation email sent to the user. | As intended. |
+| Every page is styled. | CSS styles working for every page, including AllAuth pages. | As intended. |
+| Site functions on different browswers. | Site functions on Chrome, Firefox, and Edge. | As expected. |
+| Site is responsive. | Site responds to smaller screen sizes and a variety of mobile screen sizes. | As expected. |
+| User can add items to bag. | Click add to bag will add the product to the bag. Reflected on bag page. | As intended |
+| User can change quantities | Click on plus/minus and update will change quantity in bag. | As intended. |
+| User can select variants | Select different variants from the dropdown menu. | As intended. |
+| User can make purchase | User can checkout with Stripe to pay for their order. | As intended. |
+| User can see confirmation page | After finishing an order, user is presented with confirmation page. | As intended. |
+| User received confirmation email | After finishing an order, user receves confirmation email. | As intended. |
+| User receives pop-up messages. | For many actions, such as adding to bag, messages pop up. | As intended. |
+| Messages auto-dismiss. | Messages dismiss themselves after 3 seconds. | As intended. |
+| **Registered Users** |  |  |
+| User can log in. | Clicking Log In allows user to sign into their account. | As intended. |
+| **Logged In Users** |  |  |
+| User can log out. | Clicking Log Out allows the user to sign out. | As intended. |
+| User can check their profile. | Clicking profile will show the user profile. | As intended. |
+| User can update default address. | Form on profile page updates user profile. | As intended. |
+| User can save address when checking out. | Address can be updated from the checkout page. | As intended. |
+| User can view order history. | Order history is visible on profile page. | As intended. |
+| User can view individual order details. | User can click into their order to see details. | As intended. |
+| **Superusers** |  |  |
+| Superuser can create new product. | Form for new product adds product to the database. | As intended. |
+| Superuser can edit product. | Clicking Edit allows the user to change product details. | As intended. |
+| Superuser can delete product. | Clicking Delete allows the user to delete the product. | As intended. |
+| Superuser can access CRUD tools | Each product card has edit/delete. Add is in the nav bar. | As intended. |
 
 ### Validator Testing
 
@@ -388,10 +426,8 @@ Upon checking the documentation, to find out why these were not displaying corre
 - Django
 - AllAuth
 - Heroku
-- Cloudinary
 - GitHub
 - GitPod
-- GitHub Pages
 - Firefox developer tools
 - Chrome developer tools
 - JSHint
@@ -400,6 +436,9 @@ Upon checking the documentation, to find out why these were not displaying corre
 - favicon.io
 - Wordtracker
 - XML-Sitemaps
+- Relational database
+- Stripe
+- AWS
 
 ## Credits:
 - Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
