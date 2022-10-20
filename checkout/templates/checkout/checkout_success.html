@@ -51,7 +51,7 @@
                             <div class="col">
                                 <p>{{ item.product.name }}</p>
                                 <p>Style: {% if item.product.has_variants %}{{ item.variant|upper }}{% else %}N/A{% endif %}</p>
-                                <p>{{ item.quantity }} @ ${{ item.product.price }} each</p>
+                                <p>{{ item.order_quantity }} @ ${{ item.product.price }} each</p>
                             </div>
                         </div>
                     {% endfor %}

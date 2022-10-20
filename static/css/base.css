@@ -65,3 +65,8 @@ input[type=number] {
 /* .front-page-category {
   padding-bottom: 10px;
 } */
+
+.index-cat-link {
+  text-decoration: none;
+  color: black;
+}

@@ -18,7 +18,7 @@
 
                 <hr>
 
-                <h2>Cooking</h2>
+                <h2><a class="index-cat-link" href="{% url 'products' %}?category=cooking">Cooking</a></h2>
                 <div class="row row-cols-1 row-cols-md-4">
                     {% for product in cooking %}
                         {% include './includes/gallery_display.html' %}
