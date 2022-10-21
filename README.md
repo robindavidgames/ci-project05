@@ -72,6 +72,11 @@ In addition, I used my own custom CSS file, to create smaller and more specific 
 ### Responsive Design
 The site is fully responsive. On a mobile device, the navigation menu turns into a button, product cards automatically reduce in size and evenutally stack.
 
+### Wireframes
+Wireframes were produced to help guide design.
+
+![Screenshot of desktop wireframe](/assets/readme_images/wireframedesktop.png)
+
 ## Search Engine Optimisation
 In order to populate the text on the site, I resarched google searches related to outdoor aventure, camping, hiking, etc. After compiling a list of recurring terms, I ensured that product text and page introductions used such terms. I tried to maintain a level of expertese, authoratativeness, and trustworthiness in order to satisfy Rater Guidelines.
 
@@ -96,7 +101,7 @@ My site includes a robots.txt file.
 
 ## Mailchimp Integration
 
-The site includes a link for mailing list signup through mailchimp.
+The site includes a form for mailing list signup through mailchimp.
 
 ## Agile Development / User Stories
 The site was developed using Agile Methodology (ie, MoSCoW prioritisation) to ensure that important elements were finished first and that they were approached in bite-size chunks. [User stories can be viewed here.](https://docs.google.com/spreadsheets/d/1kAf1gPciUevvqiVY8SZv4Ui5HvB0vWO3gLLJnIaMFmk/edit?usp=sharing)
@@ -511,6 +516,7 @@ Upon checking the documentation, to find out why these were not displaying corre
 - Navbar code modified from https://getbootstrap.com/docs/4.6/examples/navbar-fixed/
 - Footer code modified from https://getbootstrap.com/docs/5.1/examples/footers/
 - Product cards modified from https://getbootstrap.com/docs/4.6/components/card/#grid-cards
+- Mailchimp signup form taken from https://www.mailchimp.com.
 - Much of the project's Python code is modified from the Boutique Ado sample project. All cases of this have been commented in the code.
 - Favicon modified from Freepic icon: https://www.flaticon.com/free-icons/adventure
 - Placeholder image: https://www.flaticon.com/free-icons/picture
