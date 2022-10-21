@@ -10,8 +10,6 @@ There are two types of users:
 
 **[Click here to visit the Endless Explorer website.](https://endless-explorer.herokuapp.com/)**
 
-# RESPONSIVE DESIGN IMAGE
-
 ## Table of Contents
 
 ## Features
@@ -65,19 +63,17 @@ The Superuser has full CRUD functionality in respect to products in the store. T
 There is a custom 404 page.
 
 ## Design
-I have used a simple colour scheme, forcussing on greys and greens. This is to create a clean site. The green in the buttons is to echo the idea of nature and adventure.
+I have used a simple colour scheme, forcussing on greys and greens. This is to create a clean, more accessible and navigable site. The green in the buttons is to echo the idea of nature and adventure.
 
 I used Bootstrap for most of this project, using guidance from Bootstrap's Getting Started Documentation.
 
-In addition, I used my own custom CSS file, to create smaller and more specific styling effects. On occasion, I have applied styling to exising Bootstrap classes.
-
-# UX design
+In addition, I used my own custom CSS file, to create smaller and more specific styling effects.
 
 ### Responsive Design
-Thanks to the boostrap CSS, the site is fully responsive. On a mobile device, the navigation menu turns into a button, product cards automatically reduce in size and evenutally stack.
+The site is fully responsive. On a mobile device, the navigation menu turns into a button, product cards automatically reduce in size and evenutally stack.
 
 ## Search Engine Optimisation
-In order to populate the text on the site, I rearched google searches related to outdoor aventure, camping, hiking, etc. After compiling a list of recurring terms, I ensured that product text and page introductions used such terms. However, I tried to maintain a level of expertese, authoratativeness, and trustworthiness in order to satisfy Rater Guidelines.
+In order to populate the text on the site, I resarched google searches related to outdoor aventure, camping, hiking, etc. After compiling a list of recurring terms, I ensured that product text and page introductions used such terms. I tried to maintain a level of expertese, authoratativeness, and trustworthiness in order to satisfy Rater Guidelines.
 
 Websites such as www.wordtracker.com were invaluable for this and helped specifically with choosing product names.
 
@@ -103,9 +99,9 @@ My site includes a robots.txt file.
 The site includes a link for mailing list signup through mailchimp.
 
 ## Agile Development / User Stories
-The site was developed using Agile Methodology (ie, MoSCoW prioritisation) to ensure that important elements were finished first and that they were approached in bite-size chunks.
+The site was developed using Agile Methodology (ie, MoSCoW prioritisation) to ensure that important elements were finished first and that they were approached in bite-size chunks. [User stories can be viewed here.](https://docs.google.com/spreadsheets/d/1kAf1gPciUevvqiVY8SZv4Ui5HvB0vWO3gLLJnIaMFmk/edit?usp=sharing)
 
-# ADD
+![Screenshot of User Stories](/assets/readme_images/userstories.png)
 
 ## Accessibility
 The site is largely text based, so works well with screen readers. The exception to this is the external links in the footer, which are given an aria-label, and product images, which are given an alt text.
@@ -155,7 +151,7 @@ The website uses high-contrast colours between background and text to maintain r
 
 #### HTML validator
 
-HTML Validation at https://validator.w3.org/nu/ produces some errors on the index regarding duplicate ids. I know why this is occuring and that it isn't a problem - these ids refer to quantity selector forms that are hidden from the user and cannot be adjusted by them. Subsequently, the duplicate id has no ill effect. Other than that, the site passes HTML validation. 
+HTML Validation at https://validator.w3.org/nu/ produces some errors on the index regarding duplicate ids. I know why this is occuring and that it isn't a problem - these ids refer to quantity selector forms that are hidden from the user and cannot be adjusted by them. They only exist on the front page because that is the only place where product cards may be duplicated (they can be showcased as "On Sale" or in their default category). Subsequently, the duplicate id has no ill effect. Other than that, the site passes HTML validation. 
 
 #### CSS validator
 
@@ -178,19 +174,38 @@ The Python code passes Pep8 validation.
 ### Basics
 - Use CI Template
 - Open copy of template in gitpod
-- Install Django: "pip3 install Django==3.2"
-- Create projecT: "django-admin startproject endless_explorer ." (the . creates in current directory)
-- Create gitignore file: "touch .gitignore" (and add *.sqlite3 to this file)
+- Install Django:
+
+    pip3 install Django==3.2
+
+- Create projecT:
+
+    django-admin startproject endless_explorer .
+
+- Create gitignore file and add *.sqlite3 to this file:
+
+    touch .gitignore
+
 - Run server to make sure everything is going OK
-- Run migrations: "python3 manage.py migrate"
-- Create superuser: "python3 manage.py createsuperuser"
+- Run migrations.
+- Create superuser:
+
+    python3 manage.py createsuperuser
 
 ### AllAuth
-- Install with: "pip3 install django-allauth==0.41.0"
+- Install with:
+
+    pip3 install django-allauth==0.41.0
+
 - Add authentication backends and installed apps details, from AllAuth documentation (https://django-allauth.readthedocs.io/en/latest/installation.html)
-- Create URLs in urls.py: path('accounts', include('allauth.urls')),
-- Run migrations
-- Once done with settings, etc, "pip3 freeze > requirements.txt"
+- Create URLs in urls.py:
+
+    path('accounts', include('allauth.urls')),
+
+- Run migrations.
+- Once done with settings, etc, freeze the requirements:
+
+    pip3 freeze > requirements.txt
 
 ### AllAuth Templates
 - These are copied so that we can modify templates with versions that take precidence. Any of these that you delete will revert those requests to default.
@@ -198,63 +213,99 @@ The Python code passes Pep8 validation.
     cp -r ../.pip-modules/lib/python3.8/site-packages/allauth/templates/* ./templates/allauth/
 
 ### Create a home app
-- python3 manage.py startapp home
-- create templates directory: mkdir -p home/templates/home
-- in this, create index.html and make it extend base and load static:
+- Create app with:
+
+    python3 manage.py startapp home
+
+- Create templates directory: mkdir -p home/templates/home
+- In this, create index.html and make it extend base and load static:
 
     {% extends "base.html" %}
     {% load static %}
 
-- create a view to render the template. Go to views.py
-- create a urls.py file in home app (using the file from the project directory as a template)
-- create a blank view: path('', views.index, name="home")
-- and import views from the current directory: from . import views
-- add the URLs to the project urls.py: path('', include('home.urls')),
+- Create a view to render the template. Go to views.py
+- Create a urls.py file in home app (using the file from the project directory as a template)
+- Create a blank view:
+
+    path('', views.index, name="home")
+
+- And import views from the current directory: 
+
+    from . import views
+
+- Add the URLs to the project urls.py:
+
+    path('', include('home.urls')),
+
 - In settings.py, add "home" to installed apps.
 
 ### Install Bootsrap
 - Bootstrap is installed when using the Bootstrap Starter in the base.html file.
-- Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
 
 ### Create products app
-- python3 manage.py startapp products
-- add to installed apps in settings.py
-- create model for the products in products/models.py
-- do a migrations dry run to identify potential issues.
-- python3 manage.py makemigrations --dry-run
-- make migrations then migrate with plan flag to make sure there are no issues with models
-- python3 manage.py migrate --plan
-- migrate.
-- register product model in products/admin.py
-- from .models import Product
-- admin.site.register(Product)
+- Create app:
+
+    python3 manage.py startapp products
+
+- Add to installed apps in settings.py
+- Create model for the products in products/models.py
+- Do a migrations dry run to identify potential issues.
+
+    python3 manage.py makemigrations --dry-run
+
+- Make migrations then migrate with plan flag to make sure there are no issues with models.
+
+    python3 manage.py migrate --plan
+
+- Migrate.
+- Register product model in products/admin.py
+
+    from .models import Product
+    admin.site.register(Product)
 
 ## Project Deployment
 ### Deploying to Heroku
 - Create new app, give it a name, and choose closest region.
 - On Resources tab, create a Heroku Postgres add-on.
-- pip3 install dj_database_url
-- pip3 install psycopg2-binary
-- Freeze requirements: pip3 freeze > requirements.txt
+
+    pip3 install dj_database_url
+    pip3 install psycopg2-binary
+
+- Freeze requirements: 
+
+    pip3 freeze > requirements.txt
+
 - Add import dj_database_url to settings.py
 - Comment out the default database configuration.
 - Create a new database and pass it the DATABASE_URL from Heroku app/settings/Config Vars
 
-DATABASES = {
-    'default': dj_database_url.parse()
-}
+    DATABASES = {
+        'default': dj_database_url.parse()
+    }
 
-- Now need to run migrations again. Begin with python3 manage.py showmigrations, then python3 manage.py migrate.
+- Now need to run migrations again. Begin with "python3 manage.py showmigrations", then "python3 manage.py migrate".
 - At this point, need to create database - importing it from a json if that was used.
-- Create a new superuser with python3 manage.py createsuperuser
+- Create a new superuser with:
+
+    python3 manage.py createsuperuser
+
 - Revert database changes before commiting, so that Heroku database URL doesn't end up in version control.
-- Install gunicorn and freeze into requirements file: pip3 install gunicorn
+- Install gunicorn and freeze into requirements file:
+
+    pip3 install gunicorn
+
 - Create a Procfile to tell Heroku to create a web dyno.
 
     web: gunicorn endless_explorer.wsgi:application
 
-- Log in to heroku: heroku login -i
-- Disable collect static: heroku config:set DISABLE_COLLECTSTATIC=1 --app endless-explorer
+- Log in to heroku:
+
+    heroku login -i
+
+- Disable collect static:
+
+    heroku config:set DISABLE_COLLECTSTATIC=1 --app endless-explorer
+
 - Update allowed hosts in settings.py
 
     ALLOWED_HOSTS = ['endless-explorer.herokuapp.com', 'localhost']
@@ -264,7 +315,7 @@ DATABASES = {
     heroku git:remote -a endless-explorer
     git push heroku main
 
-(if facing an error, downgrade Heroku version with: heroku stack:set heroku-20 -a endless-explorer
+(if facing an error, downgrade Heroku version with: "heroku stack:set heroku-20 -a endless-explorer"
 then create a runtime.txt file containing: python-3.8.14)
 
 ### Github
@@ -273,7 +324,9 @@ then create a runtime.txt file containing: python-3.8.14)
 
 ### Create a new Secret Key
 - In settings/config vars, create SECRET_KEY
-- In settings.py replace the existing secret key with: SECRET_KEY = os.environ.get('SECRET_KEY', '')
+- In settings.py replace the existing secret key with:
+
+    SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 ### Arrange Amazon S3 to host static files
 - Sign up for Amazon Web Services
@@ -416,16 +469,16 @@ After deploying my site to Heroku, I made some more changes to models on my loca
 ### Strange Columns
 On several pages, columns were displaying oddly, taking up half the page, rather than being full-width. Or not holding all of their contents. I was using the Bootstrap flex-grid to create them like this:
 
-<div class="container">
-    <div class="row">
-        <div class="column">
-            <p>Column 1</p>
-        </div>
-        <div class="column">
-            <p>Column 1</p>
+    <div class="container">
+        <div class="row">
+            <div class="column">
+                <p>Column 1</p>
+            </div>
+            <div class="column">
+                <p>Column 1</p>
+            </div>
         </div>
     </div>
-</div>
 
 Upon checking the documentation, to find out why these were not displaying correctly, I realised I was using the incorrect class for each column. I should have been using the class "col". This change corrected displays across the site.
 
@@ -453,8 +506,12 @@ Upon checking the documentation, to find out why these were not displaying corre
 - AWS
 
 ## Credits:
+- Any code taken or adapted from other sources is mentioned in comments.
 - Base template modified from Bootstrap starter template: https://getbootstrap.com/docs/4.6/getting-started/introduction/#starter-template
-- Much of the project is modified from the Boutique Ado sample project.
+- Navbar code modified from https://getbootstrap.com/docs/4.6/examples/navbar-fixed/
+- Footer code modified from https://getbootstrap.com/docs/5.1/examples/footers/
+- Product cards modified from https://getbootstrap.com/docs/4.6/components/card/#grid-cards
+- Much of the project's Python code is modified from the Boutique Ado sample project. All cases of this have been commented in the code.
 - Favicon modified from Freepic icon: https://www.flaticon.com/free-icons/adventure
 - Placeholder image: https://www.flaticon.com/free-icons/picture
 - Aluminium Teapot image: https://www.aliexpress.com/item/1005004112230217.html
