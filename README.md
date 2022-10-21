@@ -75,7 +75,13 @@ The site is fully responsive. On a mobile device, the navigation menu turns into
 ### Wireframes
 Wireframes were produced to help guide design.
 
+#### Desktop Wireframe
+
 ![Screenshot of desktop wireframe](/assets/readme_images/wireframedesktop.png)
+
+#### Mobile Wireframe
+
+![Screenshot of mobile wireframe](/assets/readme_images/wireframemobile.png)
 
 ## Search Engine Optimisation
 In order to populate the text on the site, I resarched google searches related to outdoor aventure, camping, hiking, etc. After compiling a list of recurring terms, I ensured that product text and page introductions used such terms. I tried to maintain a level of expertese, authoratativeness, and trustworthiness in order to satisfy Rater Guidelines.
