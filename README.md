@@ -189,7 +189,7 @@ The Python code passes Pep8 validation.
 
     pip3 install Django==3.2
 
-- Create projecT:
+- Create project:
 
     django-admin startproject endless_explorer .
 
