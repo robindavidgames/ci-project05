@@ -22,7 +22,7 @@ class Wishlist(models.Model):
     products = models.ManyToManyField(Product, through='WishlistItem')
 
     def __str__(self):
-        return f'Wishlist ({self.user})'
+        return f'Wishlist ({self.user_profile})'
 
 
 class WishlistItem(models.Model):
