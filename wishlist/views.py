@@ -14,4 +14,10 @@ def wishlist(request):
     print(wishlist)
     wishlist_item = get_list_or_404(WishlistItem, wishlist=wishlist)
     print(wishlist_item)
-    return render(request, 'wishlist/wishlist.html')
+
+    context = {
+        'user': user,
+        'wishlist': wishlist,
+        'wishlist_item': wishlist_item,
+    }
+    return render(request, 'wishlist/wishlist.html', context)
