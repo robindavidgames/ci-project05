@@ -4,7 +4,6 @@ from django.shortcuts import (
     )
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from products.models import Product
 from profiles.models import UserProfile
 from . models import Wishlist, WishlistItem
 
@@ -19,7 +18,7 @@ def wishlist(request):
 
     try:
         wishlist_item = get_list_or_404(WishlistItem, wishlist=user_wishlist)
-    
+
     except:
         wishlist_item = None
 
@@ -55,7 +54,7 @@ def remove_from_wishlist(request, item_id):
 
     try:
         wishlist_item = get_list_or_404(WishlistItem, wishlist=user_wishlist)
-    
+
     except:
         wishlist_item = None
 
