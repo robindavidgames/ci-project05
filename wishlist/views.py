@@ -3,6 +3,7 @@ from django.shortcuts import (
     redirect, HttpResponse
     )
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from products.models import Product
 from profiles.models import UserProfile
 from . models import Wishlist, WishlistItem
@@ -27,13 +28,14 @@ def wishlist(request):
     return render(request, 'wishlist/wishlist.html', context)
 
 
+@login_required
 def add_to_wishlist(request, item_id):
     """ Add an item to the wishlist. """
 
     redirect_url = request.POST.get('redirect_url')
     user = get_object_or_404(UserProfile, user=request.user)
     user_wishlist = get_object_or_404(Wishlist, user_profile=user)
-    user_wishlist.append(item_id)
+    user_wishlist.products.add(item_id)
     messages.success(request, 'Product added to your wishlist!')
 
     print(wishlist)
