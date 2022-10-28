@@ -53,6 +53,9 @@ In the checkout, the user gets a summary of their order and then must fill in an
 ### Order confirmation
 Upon completing payment with Stripe, the user is brought to an order confirmation page, where order details are presented.
 
+### Wishlist
+This uses a custom model and allows a user to add products to their wishlist. All wishlist functionality has the @login_required deocrator, so if a user is not logged in, they will get a login prompt. If they are not logged in, wishlist buttons will also not display to the user. Upon navigating to their wishlist, users can view items, add them to their cart, click into them for more details, and remove items.
+
 ### AllAuth Pages
 User login/logout are handled though AllAuth. These pages have had CSS styling applied to them.
 

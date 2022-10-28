@@ -9,6 +9,7 @@ from profiles.models import UserProfile
 from . models import Wishlist, WishlistItem
 
 
+@login_required
 def wishlist(request):
     """
     Return a users wishlist.
