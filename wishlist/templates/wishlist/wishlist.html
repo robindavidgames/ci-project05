@@ -6,15 +6,56 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h2>Wishlist</h2>
-        </div>
-        <div>
-            <p>{{ user }}</p>
-            <p>{{ user_wishlist }}</p>
-            <p>{{ wishlist_item }}</p>
+            <h2>Wishlist for {{ user }}</h2>
         </div>
     </div>
     <hr>
+
+    <!-- If there are items in the wishlist. -->
+    {% if wishlist_item %}
+        <!-- Show items in the bag. Needs to show quantity and unit total. -->
+        {% for item in wishlist_item %}
+            <div class="row">
+                <!-- Show product image, if available. Else show a placeholder. -->
+                <div class="col-3">
+                    <a href="{% url 'product_view' item.product.id %}">
+                        {% if item.product.image %}
+                            <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.name }}">
+                        {% else %}
+                            <!-- <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="{{ item.product.name }}"> -->
+                            <img src="../media/noimage.png" class="card-img-top" alt="{{ item.product.name }}">
+                        {% endif %}
+                    </a>
+                </div>
+
+                <!-- Show product details. -->
+                <div class="col">
+                    <h5 class="card-title">
+                        <a href="{% url 'product_view' item.product.id %}">{{ item.product.name }}</a>
+                    </h5>
+
+                    <!-- If it is on sale, show the sale price with normal price struck out. Else, show normal price. -->
+                    {% if item.product.old_price %}
+                        <p class="card-text strike-through">Was: €{{ item.product.old_price }}</p>
+                        <p class="card-text">Now: €{{ item.product.price }}</p>
+                    {% else %}
+                        <p class="card-text">€{{ item.product.price }}</p>
+                    {% endif %}
+
+                    <!-- <a class="remove-item btn-outline-success my-2 btn" id="remove_{{ item.item_id }}" data-size="{{ item.variant }}">Remove</a> -->
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    
+    <!-- If the wishlist is empty. -->
+    {% else %}
+    <p>Your wishlist currently empty.</p>
+    <p>
+        <a href="{% url 'products' %}?sort=rating&direction=asc">Shop for products.</a>
+    </p>
+    {% endif %}
+</div>
 
     
 {% endblock %}

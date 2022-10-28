@@ -75,7 +75,7 @@ def checkout(request):
                     else:
                         for variant, quantity in item_data[
                             'items_by_variant'
-                            ].items():
+                        ].items():
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
