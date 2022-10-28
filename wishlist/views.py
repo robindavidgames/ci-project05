@@ -16,7 +16,12 @@ def wishlist(request):
     """
     user = get_object_or_404(UserProfile, user=request.user)
     user_wishlist = get_object_or_404(Wishlist, user_profile=user)
-    wishlist_item = get_list_or_404(WishlistItem, wishlist=user_wishlist)
+
+    try:
+        wishlist_item = get_list_or_404(WishlistItem, wishlist=user_wishlist)
+    
+    except:
+        wishlist_item = None
 
     context = {
         'user': user,
@@ -47,7 +52,12 @@ def remove_from_wishlist(request, item_id):
     user_wishlist.products.remove(item_id)
     messages.success(request, 'Product removed from your wishlist.')
     print(user_wishlist)
-    wishlist_item = get_list_or_404(WishlistItem, wishlist=user_wishlist)
+
+    try:
+        wishlist_item = get_list_or_404(WishlistItem, wishlist=user_wishlist)
+    
+    except:
+        wishlist_item = None
 
     context = {
         'user': user,
