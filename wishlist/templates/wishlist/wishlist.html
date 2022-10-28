@@ -50,6 +50,8 @@
                                 {% if product.has_variants %}
                                     <div class="text-right">
                                         <a class="btn-outline-success my-2 btn" href="{% url 'product_view' item.product.id %}">Details</a>
+                                        <br>
+                                        <a class="remove-item btn-outline-success my-2 btn" id="wishlistremove_{{ item.product.id }}" href="{% url 'remove_from_wishlist' item.product.id %}">Remove</a>
                                     </div>
                                 {% else %}
                                     <!-- Select quantity of product. -->
@@ -59,14 +61,17 @@
                                     id="id_qty_{{ item.product.id }}">
                                     <div class="text-right">
                                         <input type="submit" class="add-to-bag-button btn-outline-success my-2 btn" value="Quick Buy">
+                                        <br>
+                                        <a class="remove-item btn-outline-success my-2 btn" id="wishlistremove_{{ item.product.id }}" href="{% url 'remove_from_wishlist' item.product.id %}">Remove</a>
                                     </div>
                                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
                                 {% endif %}
                             </div>
                         </form>
                     </div>
-
-                    <!-- <a class="remove-item btn-outline-success my-2 btn" id="remove_{{ item.item_id }}" data-size="{{ item.variant }}">Remove</a> -->
+                    <!-- <div class="text-right">
+                        <a class="remove-item btn-outline-success my-2 btn" id="wishlistremove_{{ item.product.id }}" href="{% url 'remove_from_wishlist' item.product.id %}">Remove</a>
+                    </div> -->
                 </div>
             </div>
             <hr>

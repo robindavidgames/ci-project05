@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from products.models import Product
 from profiles.models import UserProfile
 
@@ -12,13 +15,14 @@ class Wishlist(models.Model):
     """
     Model representing user wishlist.
     """
-    user_profile = models.ForeignKey(
-        UserProfile,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name='wishlist'
-        )
+    # user_profile = models.ForeignKey(
+    #     UserProfile,
+    #     on_delete=models.SET_NULL,
+    #     null=True,
+    #     blank=True,
+    #     related_name='wishlist'
+    #     )
+    user_profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE, related_name='wishlist')
     products = models.ManyToManyField(Product, through='WishlistItem')
 
     def __str__(self):
@@ -26,6 +30,9 @@ class Wishlist(models.Model):
 
 
 class WishlistItem(models.Model):
+    """
+    Model representing items and their associted wishlist.
+    """
     wishlist = models.ForeignKey(
         Wishlist,
         null=False,
@@ -44,3 +51,14 @@ class WishlistItem(models.Model):
 
     def __str__(self):
         return self.product.name
+
+
+@receiver(post_save, sender=UserProfile)
+def create_or_update_user_wishlist(sender, instance, created, **kwargs):
+    """
+    Create or update the user profile
+    """
+    if created:
+        Wishlist.objects.create(user_profile=instance)
+    # Existing users: just save the wishlist
+    instance.wishlist.save()
