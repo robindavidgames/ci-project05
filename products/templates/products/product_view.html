@@ -64,6 +64,17 @@
                     </div>
                 </form>
 
+                <!-- Add to Wishlist -->
+                <form class="form" action="{% url 'add_to_wishlist' product.id %}" method="POST">
+                    {% csrf_token %}
+                    <div>
+                        <div class="text-right">
+                            <input type="submit" class="add-to-bag-button btn-outline-success my-2 btn" value="Add to Wishlist">
+                        </div>
+                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                    </div>
+                </form>
+
                 <hr>
                 <!-- Category -->
                 {% if product.category %}
