@@ -71,6 +71,9 @@
                                 </button>
                             </div>
                         </div>
+                        {% if item.product.has_variants %}
+                            <input type="hidden" name="variant" value="{{ item.variant }}">
+                        {% endif %}
                     </form>
                     <a class="update-link btn-outline-success my-2 btn">Update</a>
                     <a class="remove-item btn-outline-success my-2 btn" id="remove_{{ item.item_id }}" data-size="{{ item.variant }}">Remove</a>

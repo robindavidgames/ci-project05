@@ -44,6 +44,7 @@ def add_to_bag(request, item_id):
 
     messages.success(request, 'Product added to bag!')
     request.session['bag'] = bag
+    print(bag)
     return redirect(redirect_url)
 
 
@@ -59,6 +60,10 @@ def adjust_bag(request, item_id):
 
     # Check if item has a variant
     if variant:
+    # if bag[item_id].product.has_variants:
+    # if product.has_variants:
+    # if item.has_variants:
+    # if item.product.has_variants:
         if quantity > 0:
             bag[item_id]['items_by_variant'][variant] = quantity
         else:
