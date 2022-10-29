@@ -496,6 +496,13 @@ On several pages, columns were displaying oddly, taking up half the page, rather
 
 Upon checking the documentation, to find out why these were not displaying correctly, I realised I was using the incorrect class for each column. I should have been using the class "col". This change corrected displays across the site.
 
+### Updating Quantities of Variant Products
+While it was possible to continue to add variant products to the shopping bag, and update quantities in this way, updating their quantity from the shopping bag directly caused all variants to be deleted. I came to realise that this was because the view was looking for variant details when submitting the update quantity form in the shopping bag. Adding this piece of code to the quantity selector form solved the issue very easily:
+
+    {% if item.product.has_variants %}
+        <input type="hidden" name="variant" value="{{ item.variant }}">
+    {% endif %}
+
 ## Technologies Used
 
 - Javascript
