@@ -44,23 +44,48 @@
                             <label for="variant">Choose a style:</label>
                             <select id="variant_picker" name="variant" class="btn-outline-success my-2 btn">
                                 {% if product.variant_one %}
-                                    <option value="{{ product.variant_one }}">{{ product.variant_one }}</option>
+                                    {% if product.variant_one_stock_quantity > 0 %}
+                                        <option value="{{ product.variant_one }}">{{ product.variant_one }}</option>
+                                    {% else %}
+                                        <option value="{{ product.variant_one }}" disabled>{{ product.variant_one }} | Out of Stock!</option>
+                                    {% endif %}
                                 {% endif %}
                                 {% if product.variant_two %}
-                                    <option value="{{ product.variant_two }}">{{ product.variant_two }}</option>
+                                    {% if product.variant_two_stock_quantity > 0 %}
+                                        <option value="{{ product.variant_one }}">{{ product.variant_two }}</option>
+                                    {% else %}
+                                        <option value="{{ product.variant_one }}" disabled>{{ product.variant_two }} | Out of Stock!</option>
+                                    {% endif %}
                                 {% endif %}
                                 {% if product.variant_three %}
-                                    <option value="{{ product.variant_three }}">{{ product.variant_three }}</option>
+                                    {% if product.variant_three_stock_quantity > 0 %}
+                                        <option value="{{ product.variant_one }}">{{ product.variant_three }}</option>
+                                    {% else %}
+                                        <option value="{{ product.variant_one }}" disabled>{{ product.variant_three }} | Out of Stock!</option>
+                                    {% endif %}
                                 {% endif %}
                             </select> 
-                        {% endif %}
 
-                        <!-- Select quantity of product. -->
-                        {% include 'products/includes/quantity_selection_form.html' %}
-                        <div class="text-right">
-                            <input type="submit" class="add-to-bag-button btn-outline-success my-2 btn" value="Add to Bag">
-                        </div>
-                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                            <!-- Select quantity of product for variant product. -->
+                            {% include 'products/includes/quantity_selection_form.html' %}
+                            <div class="text-right">
+                                <input type="submit" class="add-to-bag-button btn-outline-success my-2 btn" value="Add to Bag">
+                            </div>
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+
+                        {% else %}
+
+                        <!-- Select quantity of product for non-variant product. -->
+                            {% if product.stock_quantity > 0 %}
+                                {% include 'products/includes/quantity_selection_form.html' %}
+                                <div class="text-right">
+                                    <input type="submit" class="add-to-bag-button btn-outline-success my-2 btn" value="Add to Bag">
+                                </div>
+                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                            {% else %}
+                                <p>Out of stock!</p>
+                            {% endif %}
+                        {% endif %}
                     </div>
                 </form>
 
