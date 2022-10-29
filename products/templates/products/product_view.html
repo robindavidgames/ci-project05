@@ -52,30 +52,38 @@
                                 {% endif %}
                                 {% if product.variant_two %}
                                     {% if product.variant_two_stock_quantity > 0 %}
-                                        <option value="{{ product.variant_one }}">{{ product.variant_two }}</option>
+                                        <option value="{{ product.variant_two }}">{{ product.variant_two }}</option>
                                     {% else %}
-                                        <option value="{{ product.variant_one }}" disabled>{{ product.variant_two }} | Out of Stock!</option>
+                                        <option value="{{ product.variant_two }}" disabled>{{ product.variant_two }} | Out of Stock!</option>
                                     {% endif %}
                                 {% endif %}
                                 {% if product.variant_three %}
                                     {% if product.variant_three_stock_quantity > 0 %}
-                                        <option value="{{ product.variant_one }}">{{ product.variant_three }}</option>
+                                        <option value="{{ product.variant_three }}">{{ product.variant_three }}</option>
                                     {% else %}
-                                        <option value="{{ product.variant_one }}" disabled>{{ product.variant_three }} | Out of Stock!</option>
+                                        <option value="{{ product.variant_three }}" disabled>{{ product.variant_three }} | Out of Stock!</option>
                                     {% endif %}
                                 {% endif %}
                             </select> 
 
                             <!-- Select quantity of product for variant product. -->
-                            {% include 'products/includes/quantity_selection_form.html' %}
-                            <div class="text-right">
-                                <input type="submit" class="add-to-bag-button btn-outline-success my-2 btn" value="Add to Bag">
-                            </div>
-                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                            <!-- As indicated here, parenthesis are not permitted and so must use nested if tags. https://docs.djangoproject.com/en/4.1/ref/templates/builtins/#boolean-operators -->
+                            {% if product.variant_one_stock_quantity == 0 or product.variant_one == Null %}
+                                {% if product.variant_two_stock_quantity == 0 or product.variant_two == Null %}
+                                    {% if product.variant_three_stock_quantity == 0 or product.variant_three == Null %}
+                                        <p>Out of stock!</p>
+                                    {% else %}
+                                        <div class="text-right">
+                                            <input type="submit" class="add-to-bag-button btn-outline-success my-2 btn" value="Add to Bag">
+                                        </div>
+                                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
 
                         {% else %}
 
-                        <!-- Select quantity of product for non-variant product. -->
+                            <!-- Select quantity of product for non-variant product. -->
                             {% if product.stock_quantity > 0 %}
                                 {% include 'products/includes/quantity_selection_form.html' %}
                                 <div class="text-right">
