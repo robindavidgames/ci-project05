@@ -90,3 +90,8 @@ input[type=number] {
 .main-title {
   margin-top: 80px;
 }
+
+.out-of-stock {
+  font-weight: bold;
+  color: red;
+}

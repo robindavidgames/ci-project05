@@ -67,11 +67,11 @@
                             </select> 
 
                             <!-- Select quantity of product for variant product. -->
-                            <!-- As indicated here, parenthesis are not permitted and so must use nested if tags. https://docs.djangoproject.com/en/4.1/ref/templates/builtins/#boolean-operators -->
+                            <!-- As indicated here, parenthesis are not permitted and so must use nested 'if' tags. https://docs.djangoproject.com/en/4.1/ref/templates/builtins/#boolean-operators -->
                             {% if product.variant_one_stock_quantity == 0 or product.variant_one == Null %}
                                 {% if product.variant_two_stock_quantity == 0 or product.variant_two == Null %}
                                     {% if product.variant_three_stock_quantity == 0 or product.variant_three == Null %}
-                                        <p>Out of stock!</p>
+                                        <p class="out-of-stock">Out of stock!</p>
                                     {% else %}
                                         <div class="text-right">
                                             <input type="submit" class="add-to-bag-button btn-outline-success my-2 btn" value="Add to Bag">
@@ -91,7 +91,7 @@
                                 </div>
                                 <input type="hidden" name="redirect_url" value="{{ request.path }}">
                             {% else %}
-                                <p>Out of stock!</p>
+                                <p class="out-of-stock">Out of stock!</p>
                             {% endif %}
                         {% endif %}
                     </div>
