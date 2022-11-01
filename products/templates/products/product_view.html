@@ -45,21 +45,21 @@
                             <select id="variant_picker" name="variant" class="btn-outline-success my-2 btn">
                                 {% if product.variant_one %}
                                     {% if product.variant_one_stock_quantity > 0 %}
-                                        <option value="{{ product.variant_one }}">{{ product.variant_one }} | {{ product.variant_one_stock_quantity }} in stock</option>
+                                        <option value="{{ product.variant_one }}" data-stock="{{ product.variant_one_stock_quantity }}">{{ product.variant_one }} | {{ product.variant_one_stock_quantity }} in stock</option>
                                     {% else %}
                                         <option value="{{ product.variant_one }}" disabled>{{ product.variant_one }} | Out of Stock!</option>
                                     {% endif %}
                                 {% endif %}
                                 {% if product.variant_two %}
                                     {% if product.variant_two_stock_quantity > 0 %}
-                                        <option value="{{ product.variant_two }}">{{ product.variant_two }} | {{ product.variant_two_stock_quantity }} in stock</option>
+                                        <option value="{{ product.variant_two }}" data-stock="{{ product.variant_two_stock_quantity }}">{{ product.variant_two }} | {{ product.variant_two_stock_quantity }} in stock</option>
                                     {% else %}
                                         <option value="{{ product.variant_two }}" disabled>{{ product.variant_two }} | Out of Stock!</option>
                                     {% endif %}
                                 {% endif %}
                                 {% if product.variant_three %}
                                     {% if product.variant_three_stock_quantity > 0 %}
-                                        <option value="{{ product.variant_three }}">{{ product.variant_three }} | {{ product.variant_three_stock_quantity }} in stock</option>
+                                        <option value="{{ product.variant_three }}" data-stock="{{ product.variant_three_stock_quantity }}">{{ product.variant_three }} | {{ product.variant_three_stock_quantity }} in stock</option>
                                     {% else %}
                                         <option value="{{ product.variant_three }}" disabled>{{ product.variant_three }} | Out of Stock!</option>
                                     {% endif %}

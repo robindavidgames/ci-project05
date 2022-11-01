@@ -1,13 +1,20 @@
 <!-- Modified from Boutique Ado project -->
 
 <!-- Guidance on how to refer to models in JS found in  https://stackoverflow.com/questions/58292527/how-to-use-djangos-models-in-javascript -->
+<!-- How to get values from dropdown option pickers: https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript -->
+<!-- How to get data values from dropdown option pickers: https://stackoverflow.com/questions/38519791/how-to-get-data-attribute-of-option-tag-in-javascript -->
 {% if product.has_variants %}
     <script>
-        var stock = 98;
+        // To set the default max value of the quantity selector to default selected variant stock value.
+        // This has to be done programatically because the first variant might not always be avaialable.
+        var e = document.getElementById("variant_picker");
+        var option = e.options[e.selectedIndex];
+        var stock = option.getAttribute("data-stock") - 1;
     </script>
 {% else %}
     <script>
-    var stock = {{ product.stock_quantity|safe }} - 1;
+        // If a standard product, simply set max quantity to the current stock level.
+        var stock = {{ product.stock_quantity|safe }} - 1;
     </script>
 {% endif %}
 
