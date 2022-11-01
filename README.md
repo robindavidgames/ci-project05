@@ -65,6 +65,9 @@ The Superuser has full CRUD functionality in respect to products in the store. T
 ### Custom 404
 There is a custom 404 page.
 
+### Out of Stock Notices
+If an item is out of stock, the site will display this status on the item page, and on item preview cards on the front page and category view pages. It will also remove the Add to Cart button and the Quick Buy button from all these locations. If an item variant is out of stock, the site will display this status on the variant drop-down menu and prevent the user from selecting that specific variant. If all variants are out of stock (and thus the product is completely unavailable), the site will display status this to the user and remove the Add to Cart button. In this instance, the variant selection box is still displayed (although nothing can be selected), so that the user can still view variants. Out of stock items can still be added to the user's wishlist.
+
 ## Design
 I have used a simple colour scheme, forcussing on greys and greens. This is to create a clean, more accessible and navigable site. The green in the buttons is to echo the idea of nature and adventure.
 
