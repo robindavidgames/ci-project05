@@ -75,7 +75,6 @@
                                                     <a class="btn-outline-success my-2 btn" href="{% url 'product_view' product.id %}">Details</a>
                                                 </div>
                                             {% else %}
-                                                <!-- Why doesn't this work?? -->
                                                 {% if product.stock_quantity > 0 %}
                                                     <!-- Select quantity of product. -->
                                                     <input class="form-control qty_input hide" type="number"

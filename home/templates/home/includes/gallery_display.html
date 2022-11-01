@@ -41,15 +41,19 @@
                                     <a class="btn-outline-success my-2 btn" href="{% url 'product_view' product.id %}">Details</a>
                                 </div>
                             {% else %}
-                                <!-- Select quantity of product. -->
-                                <input class="form-control qty_input hide" type="number"
-                                name="quantity" value="1" min="1" max="99"
-                                data-item_id="{{ product.id }}"
-                                id="id_qty_{{ product.id }}">
-                                <div class="text-right">
-                                    <input type="submit" class="add-to-bag-button btn-outline-success my-2 btn" value="Quick Buy">
-                                </div>
-                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                {% if product.stock_quantity > 0 %}
+                                    <!-- Select quantity of product. -->
+                                    <input class="form-control qty_input hide" type="number"
+                                    name="quantity" value="1" min="1" max="99"
+                                    data-item_id="{{ product.id }}"
+                                    id="id_qty_{{ product.id }}">
+                                    <div class="text-right">
+                                        <input type="submit" class="add-to-bag-button btn-outline-success my-2 btn" value="Quick Buy">
+                                    </div>
+                                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                {% else %}
+                                    <p class="out-of-stock">Out of stock!</p>
+                                {% endif %}
                             {% endif %}
                         </div>
                     </form>
