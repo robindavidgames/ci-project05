@@ -1,12 +1,23 @@
 <!-- Modified from Boutique Ado project -->
 
+<!-- Guidance on how to refer to models in JS found in  https://stackoverflow.com/questions/58292527/how-to-use-djangos-models-in-javascript -->
+{% if product.has_variants %}
+    <script>
+        var stock = 98;
+    </script>
+{% else %}
+    <script>
+    var stock = {{ product.stock_quantity|safe }} - 1;
+    </script>
+{% endif %}
+
 <script type="text/javascript">
 
     // Disable +/- buttons outside 1-99 range
     function handleEnableDisable(itemId) {
         var currentValue = parseInt($(`#id_qty_${itemId}`).val());
         var minusDisabled = currentValue < 2;
-        var plusDisabled = currentValue > 98;
+        var plusDisabled = currentValue > stock;
         $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
         $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
     }

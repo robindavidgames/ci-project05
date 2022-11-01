@@ -11,10 +11,17 @@
             </span>
         </button>
     </div>
-    <input class="form-control qty_input btn-outline-success my-2 my-sm-0" type="number"
-        name="quantity" value="1" min="1" max="99"
-        data-item_id="{{ product.id }}"
-        id="id_qty_{{ product.id }}">
+    {% if product.stock_quantity > 0 %}
+        <input class="form-control qty_input btn-outline-success my-2 my-sm-0" type="number"
+            name="quantity" value="1" min="1" max="{{ product.stock_quantity }}"
+            data-item_id="{{ product.id }}"
+            id="id_qty_{{ product.id }}">
+    {% else %}
+        <input class="form-control qty_input btn-outline-success my-2 my-sm-0" type="number"
+            name="quantity" value="1" min="1" max="99"
+            data-item_id="{{ product.id }}"
+            id="id_qty_{{ product.id }}">
+    {% endif %}
     <div class="input-group-append">
         <button class="increment-qty btn btn-outline-success my-2 my-sm-0"
             data-item_id="{{ product.id }}" id="increment-qty_{{ product.id }}">
