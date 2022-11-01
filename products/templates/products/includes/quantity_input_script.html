@@ -1,12 +1,8 @@
-<!-- Modified from Boutique Ado project -->
-
-<!-- Guidance on how to refer to models in JS found in  https://stackoverflow.com/questions/58292527/how-to-use-djangos-models-in-javascript -->
-<!-- How to get values from dropdown option pickers: https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript -->
-<!-- How to get data values from dropdown option pickers: https://stackoverflow.com/questions/38519791/how-to-get-data-attribute-of-option-tag-in-javascript -->
 {% if product.has_variants %}
     <script>
         // To set the default max value of the quantity selector to default selected variant stock value.
         // This has to be done programatically because the first variant might not always be avaialable.
+        // How to get data values from dropdown option pickers: https://stackoverflow.com/questions/38519791/how-to-get-data-attribute-of-option-tag-in-javascript
         var e = document.getElementById("variant_picker");
         var option = e.options[e.selectedIndex];
         var stock = option.getAttribute("data-stock") - 1;
@@ -14,10 +10,12 @@
 {% else %}
     <script>
         // If a standard product, simply set max quantity to the current stock level.
+        // Guidance on how to refer to models in JS found in  https://stackoverflow.com/questions/58292527/how-to-use-djangos-models-in-javascript
         var stock = {{ product.stock_quantity|safe }} - 1;
     </script>
 {% endif %}
 
+<!-- Modified from Boutique Ado project -->
 <script type="text/javascript">
 
     // Disable +/- buttons outside 1-99 range
@@ -60,5 +58,20 @@
        $(closestInput).val(currentValue - 1);
        var itemId = $(this).data('item_id');
        handleEnableDisable(itemId);
+    });
+
+    // Change variant
+    $('#variant_picker').change(function(e) {
+        console.log("Variant changed.");
+        var e = document.getElementById("variant_picker");
+        var option = e.options[e.selectedIndex];
+        var stock = option.getAttribute("data-stock") - 1;
+        console.log(stock);
+        var currentValue = parseInt($(`#id_qty_${itemId}`).val());
+        console.log(currentValue);
+        // if (currentValue > stock) {
+            // set value of quantity picker to max stock level
+        // }
+        handleEnableDisable(itemId);
     });
 </script>
