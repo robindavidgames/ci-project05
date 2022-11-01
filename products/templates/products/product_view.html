@@ -73,12 +73,13 @@
                                     {% if product.variant_three_stock_quantity == 0 or product.variant_three == Null %}
                                         <p class="out-of-stock">Out of stock!</p>
                                     {% else %}
-                                        <div class="text-right">
-                                            <input type="submit" class="add-to-bag-button btn-outline-success my-2 btn" value="Add to Bag">
-                                        </div>
-                                        <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                        {% include 'products/includes/add_to_bag_button.html' %}
                                     {% endif %}
+                                {% else %}
+                                    {% include 'products/includes/add_to_bag_button.html' %}
                                 {% endif %}
+                            {% else %}
+                                {% include 'products/includes/add_to_bag_button.html' %}
                             {% endif %}
 
                         {% else %}
@@ -86,10 +87,7 @@
                             <!-- Select quantity of product for non-variant product. -->
                             {% if product.stock_quantity > 0 %}
                                 {% include 'products/includes/quantity_selection_form.html' %}
-                                <div class="text-right">
-                                    <input type="submit" class="add-to-bag-button btn-outline-success my-2 btn" value="Add to Bag">
-                                </div>
-                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                                {% include 'products/includes/add_to_bag_button.html' %}
                             {% else %}
                                 <p class="out-of-stock">Out of stock!</p>
                             {% endif %}
