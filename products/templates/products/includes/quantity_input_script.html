@@ -1,6 +1,7 @@
 <!-- Heavily modified from Boutique Ado project -->
 <script type="text/javascript">
 
+    // Set stock level on page load.
     {% if product.has_variants %}
             // To set the default max value of the quantity selector to default selected variant stock value.
             // This has to be done programatically because the first variant might not always be avaialable.
@@ -18,7 +19,7 @@
     var allQtyInputs = $('.qty_input');
     for(var i = 0; i < allQtyInputs.length; i++){
         var itemId = $(allQtyInputs[i]).data('item_id');
-        handleEnableDisable(itemId);
+        handleEnableDisable(itemId, stock);
     };
 
     // Check enable/disable every time the input is changed
@@ -49,6 +50,7 @@
 
     // Change variant
     $('#variant_picker').change(function(e) {
+        // Find the stock value of the new variant selected.
         var e = document.getElementById("variant_picker");
         var option = e.options[e.selectedIndex];
         var stock = option.getAttribute("data-stock") - 1;
