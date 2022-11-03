@@ -167,6 +167,10 @@ def checkout_success(request, order_number):
         # Attach the user's profile to the order
         order.user_profile = profile
         order.save()
+        # print(f"oder contains: {order}")
+        # print(f"Order contains: {Order}")
+        # print(f"order.lineitems contains: {order.lineitems}")
+        # print(f"order.product contains: {order.product}")
 
         # Save the user's info
         if save_info:
@@ -189,9 +193,6 @@ def checkout_success(request, order_number):
 
     if 'bag' in request.session:
         del request.session['bag']
-
-    # ADD FUNCTIONALITY HERE!
-    # Reduce item stock levels by order quantitites.
 
     template = 'checkout/checkout_success.html'
     context = {
