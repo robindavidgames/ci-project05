@@ -54,6 +54,14 @@
         var e = document.getElementById("variant_picker");
         var option = e.options[e.selectedIndex];
         var stock = option.getAttribute("data-stock") - 1;
+
+        // If the current chosen value is higher than the maximum stock for new variant, reduce current value.
+        var currentValue = parseInt($(`#id_qty_${itemId}`).val());
+        if (currentValue > stock) {
+            $(`#id_qty_${itemId}`).val(stock + 1);
+        }
+
+        // Send new stock value to the function to enable and disable buttons.
         handleEnableDisable(itemId, stock);
     });
 
