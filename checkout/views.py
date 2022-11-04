@@ -167,10 +167,22 @@ def checkout_success(request, order_number):
         # Attach the user's profile to the order
         order.user_profile = profile
         order.save()
-        # print(f"oder contains: {order}")
-        # print(f"Order contains: {Order}")
-        # print(f"order.lineitems contains: {order.lineitems}")
-        # print(f"order.product contains: {order.product}")
+
+        # Iterate through the chosen products to reduce stock quantity.
+        lineitems = order.lineitems.all()
+        for item in lineitems:
+            # This is the product
+            print(item.product)
+            # This is the amount ordered
+            print(item.order_quantity)
+            # Product current stock.
+            print(item.product.stock_quantity)
+
+            # Reduce the current stock level
+            current_stock = item.product.stock_quantity
+            order_stock = item.order_quantity
+            item.product.stock_quantity = current_stock - order_stock
+            item.product.save()
 
         # Save the user's info
         if save_info:
