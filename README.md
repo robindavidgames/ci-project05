@@ -71,6 +71,9 @@ If an item is out of stock, the site will display this status on the item page, 
 ### Quantity Selection Box
 The quantity selection box limits how many items the user can add to the available stock of the item (which is displayed on the product page). If the product has variant items, then the available stock with update dynamically as the player picks the different variants from the drop down menu. This uses an event listener for the user making this choice and feeds the new stock level back into the function that enabales and disables the +/- buttons. If the user had a variant with a higher stock limit selected and then changed to a vatiant with a lower stock limit, the quantity box would update to show the maximum amount of the newly selected product variant.
 
+### Stock Management
+When the user finishes the checkout process and the order has been confirmed, stock levels of ordered items are reduced by the number of items that the user bought. This also applies to stock levels of variant items, if the user bought those.
+
 ## Design
 I have used a simple colour scheme, forcussing on greys and greens. This is to create a clean, more accessible and navigable site. The green in the buttons is to echo the idea of nature and adventure.
 

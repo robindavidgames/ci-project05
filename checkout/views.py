@@ -171,19 +171,25 @@ def checkout_success(request, order_number):
         # Iterate through the chosen products to reduce stock quantity.
         lineitems = order.lineitems.all()
         for item in lineitems:
-            # This is the product
-            print(item.product)
-            # This is the amount ordered
-            print(item.order_quantity)
-            # Product current stock.
-            print(item.product.stock_quantity)
-
-            # Reduce the current stock level
+            # For variant products
             if item.product.has_variants:
                 print("Variant product.")
                 current_variant = item.product_variant
                 print(current_variant)
-
+                if item.product.variant_one == current_variant:
+                    print("Variant 1")
+                    item.product.variant_one_stock_quantity -= (
+                        item.order_quantity)
+                elif item.product.variant_two == current_variant:
+                    print("Variant 2")
+                    item.product.variant_two_stock_quantity -= (
+                        item.order_quantity)
+                elif item.product.variant_three == current_variant:
+                    print("Variant 3")
+                    item.product.variant_three_stock_quantity -= (
+                        item.order_quantity)
+                item.product.save()
+            # For non-variant products.
             else:
                 item.product.stock_quantity -= item.order_quantity
                 item.product.save()
