@@ -65,14 +65,17 @@ The Superuser has full CRUD functionality in respect to products in the store. T
 ### Custom 404
 There is a custom 404 page.
 
-### Out of Stock Notices
-If an item is out of stock, the site will display this status on the item page, and on item preview cards on the front page and category view pages. It will also remove the Add to Cart button and the Quick Buy button from all these locations. If an item variant is out of stock, the site will display this status on the variant drop-down menu and prevent the user from selecting that specific variant. If all variants are out of stock (and thus the product is completely unavailable), the site will display status this to the user and remove the Add to Cart button. In this instance, the variant selection box is still displayed (although nothing can be selected), so that the user can still view variants. Out of stock items can still be added to the user's wishlist.
-
-### Quantity Selection Box
-The quantity selection box limits how many items the user can add to the available stock of the item (which is displayed on the product page). If the product has variant items, then the available stock with update dynamically as the player picks the different variants from the drop down menu. This uses an event listener for the user making this choice and feeds the new stock level back into the function that enabales and disables the +/- buttons. If the user had a variant with a higher stock limit selected and then changed to a vatiant with a lower stock limit, the quantity box would update to show the maximum amount of the newly selected product variant.
-
 ### Stock Management
+Each item and each item variant has a field to record the current stock level. This has several uses, as detailed below.
+
+#### Automatic Stock Reduction
 When the user finishes the checkout process and the order has been confirmed, stock levels of ordered items are reduced by the number of items that the user bought. This also applies to stock levels of variant items, if the user bought those.
+
+#### Out of Stock Notices
+If an item is out of stock, the site will display this status on the item page, and on item preview cards on the front page and category view pages. It will also remove the Add to Cart button and the Quick Buy button from all these locations. If an item variant is out of stock, the site will display this status on the variant drop-down menu and prevent the user from selecting that specific variant. If all variants are out of stock (and thus the product is completely unavailable), the site will display this status to the user and remove the Add to Cart button. In this instance, the variant selection box is still displayed (although nothing can be selected), so that the user can still view variants. Out of stock items can still be added to the user's wishlist.
+
+#### Quantity Selection Box
+The quantity selection box on product detail pages limits how many items the user can add to the available stock of the item (which is displayed on the product page). If the product has variant items, then the available stock with update dynamically as the player picks the different variants from the drop-down menu. This is performaed using an event listener on the drop-down menu and feeds the new stock level back into the function that enabales and disables the +/- buttons. If the user had a variant with a higher stock limit selected and then changed to a vatiant with a lower stock limit, the quantity box updates to show the maximum amount of the newly selected product variant.
 
 ## Design
 I have used a simple colour scheme, forcussing on greys and greens. This is to create a clean, more accessible and navigable site. The green in the buttons is to echo the idea of nature and adventure.
