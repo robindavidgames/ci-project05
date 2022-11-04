@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect, reverse, HttpResponse
 from django.contrib import messages
 
-# from products.models import Product
-
 
 def view_bag(request):
     """ A view to return the shopping_bag page. """

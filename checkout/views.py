@@ -183,10 +183,9 @@ def checkout_success(request, order_number):
                 print("Variant product.")
                 current_variant = item.product_variant
                 print(current_variant)
+
             else:
-                current_stock = item.product.stock_quantity
-                order_stock = item.order_quantity
-                item.product.stock_quantity = current_stock - order_stock
+                item.product.stock_quantity -= item.order_quantity
                 item.product.save()
 
         # Save the user's info

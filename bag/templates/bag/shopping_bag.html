@@ -59,7 +59,7 @@
                                 </button>
                             </div>
                             <input class="form-control qty_input btn-outline-success my-2 my-sm-0" type="number"
-                                name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.product.stock_quantity }}"
                                 data-item_id="{{ item.item_id }}"
                                 id="id_qty_{{ item.item_id }}">
                             <div class="input-group-append">
