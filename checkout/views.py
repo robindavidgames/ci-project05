@@ -179,10 +179,15 @@ def checkout_success(request, order_number):
             print(item.product.stock_quantity)
 
             # Reduce the current stock level
-            current_stock = item.product.stock_quantity
-            order_stock = item.order_quantity
-            item.product.stock_quantity = current_stock - order_stock
-            item.product.save()
+            if item.product.has_variants:
+                print("Variant product.")
+                current_variant = item.product_variant
+                print(current_variant)
+            else:
+                current_stock = item.product.stock_quantity
+                order_stock = item.order_quantity
+                item.product.stock_quantity = current_stock - order_stock
+                item.product.save()
 
         # Save the user's info
         if save_info:
