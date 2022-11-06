@@ -173,19 +173,14 @@ def checkout_success(request, order_number):
         for item in lineitems:
             # For variant products
             if item.product.has_variants:
-                print("Variant product.")
                 current_variant = item.product_variant
-                print(current_variant)
                 if item.product.variant_one == current_variant:
-                    print("Variant 1")
                     item.product.variant_one_stock_quantity -= (
                         item.order_quantity)
                 elif item.product.variant_two == current_variant:
-                    print("Variant 2")
                     item.product.variant_two_stock_quantity -= (
                         item.order_quantity)
                 elif item.product.variant_three == current_variant:
-                    print("Variant 3")
                     item.product.variant_three_stock_quantity -= (
                         item.order_quantity)
                 item.product.save()
