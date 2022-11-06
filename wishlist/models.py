@@ -22,7 +22,13 @@ class Wishlist(models.Model):
     #     blank=True,
     #     related_name='wishlist'
     #     )
-    user_profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE, related_name='wishlist')
+    user_profile = models.OneToOneField(
+        UserProfile,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='wishlist'
+        )
     products = models.ManyToManyField(Product, through='WishlistItem')
 
     def __str__(self):
