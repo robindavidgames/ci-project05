@@ -15,13 +15,6 @@ class Wishlist(models.Model):
     """
     Model representing user wishlist.
     """
-    # user_profile = models.ForeignKey(
-    #     UserProfile,
-    #     on_delete=models.SET_NULL,
-    #     null=True,
-    #     blank=True,
-    #     related_name='wishlist'
-    #     )
     user_profile = models.OneToOneField(
         UserProfile,
         on_delete=models.CASCADE,
