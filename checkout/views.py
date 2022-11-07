@@ -98,7 +98,7 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('view_bag'))
 
-            # If the user wants to save their info, 
+            # If the user wants to save their info,
             # redirect them to a new page.
             request.session['save_info'] = 'save-info' in request.POST
             return redirect(reverse(
