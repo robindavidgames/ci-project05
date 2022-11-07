@@ -22,6 +22,7 @@ class StripeWH_Handler:
 
     def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
+        print('send_confirmation_email is running...')
         cust_email = order.email
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
@@ -49,6 +50,7 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
+        print('handle_payment_intent.succeeded is running...')
         intent = event.data.object
         pid = intent.id
         bag = intent.metadata.bag
@@ -93,8 +95,8 @@ class StripeWH_Handler:
                     street_address_2__iexact=shipping_details.address.line2,
                     county__iexact=shipping_details.address.state,
                     grand_total=grand_total,
-                    original_bag=bag,
-                    stripe_pid=pid,
+                    # original_bag=bag,
+                    # stripe_pid=pid,
                 )
                 order_exists = True
                 break
@@ -120,8 +122,8 @@ class StripeWH_Handler:
                     street_address_1=shipping_details.address.line1,
                     street_address_2=shipping_details.address.line2,
                     county=shipping_details.address.state,
-                    original_bag=bag,
-                    stripe_pid=pid,
+                    # original_bag=bag,
+                    # stripe_pid=pid,
                 )
                 for item_id, item_data in json.loads(bag).items():
                     product = Product.objects.get(id=item_id)
