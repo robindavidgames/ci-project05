@@ -172,6 +172,10 @@ The website uses high-contrast colours between background and text to maintain r
 | Superuser can edit product. | Clicking Edit allows the user to change product details. | As intended. |
 | Superuser can delete product. | Clicking Delete allows the user to delete the product. | As intended. |
 | Superuser can access CRUD tools | Each product card has edit/delete. Add is in the nav bar. | As intended. |
+| **Automation** |  |  |
+| Webhook executes on successful order. | Webhook processes order when Stripe confirms order placement. | As intended. |
+| Webhook catches failed orders. | On event of site issue/user disconnect, webhook has process successful order from payment data. | As intended. |
+| Webhook sends confirmation emails. | Email sent to user upon completion of order. | As intended. |
 
 ### Validator Testing
 

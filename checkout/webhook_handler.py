@@ -15,14 +15,11 @@ import time
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
 
-    print('Webhook is running...')
-
     def __init__(self, request):
         self.request = request
 
     def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
-        print('send_confirmation_email is running...')
         cust_email = order.email
         subject = render_to_string(
             'checkout/confirmation_email/confirmation_email_subject.txt',
@@ -50,7 +47,6 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
-        print('handle_payment_intent.succeeded is running...')
         intent = event.data.object
         pid = intent.id
         bag = intent.metadata.bag
@@ -84,7 +80,6 @@ class StripeWH_Handler:
         attempt = 1
         while attempt <= 5:
             try:
-                print(f'Create order attempt {attempt}.')
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
                     email__iexact=billing_details.email,
@@ -102,18 +97,15 @@ class StripeWH_Handler:
                 order_exists = True
                 break
             except Order.DoesNotExist:
-                print('Order does not exist.')
                 attempt += 1
                 time.sleep(3)
         if order_exists:
-            print('Order exists. Sending confirmation email.')
             self._send_confirmation_email(order)
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | \
                     SUCCESS: Verified order already in database',
                 status=200)
         else:
-            print('Running else loop.')
             order = None
             try:
                 order = Order.objects.create(
